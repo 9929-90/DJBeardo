@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Beard - Udaipur | Official Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous" />
+
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 50px;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background-color: white;
+           
+        }
+        .navbar.scrolled {
+            background: white;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        .logo img {
+            height: 100px;
+            width: 140px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.08) rotate(2deg);
+        }
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: black;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(9px, 9px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(9px, -9px);
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 999;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .mobile-menu.active a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mobile-menu.active a:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu.active a:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-menu.active a:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-menu.active a:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-menu.active a:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-menu.active a:nth-child(6) { transition-delay: 0.35s; }
+        .mobile-menu a:hover {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 800px;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:black;
+            pointer-events: none;
+        }
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+            z-index: 1;
+        }
+        .hero-text {
+            order: 1;
+        }
+        .hero-image-wrapper {
+            order: 2;
+            text-align: center;
+            position: relative;
+        }
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background:black;
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.3; }
+        }
+        .hero-image {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+    
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-text h1 {
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-text p {
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: #ccc;
+            text-transform: uppercase;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+        .hero-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,255,255,0.3);
+        }
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            box-shadow: none;
+        }
+        .hero-btn.secondary:hover {
+            background: #fff;
+            color: #000;
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.2s, bounce 2s ease infinite 2.2s;
+            cursor: pointer;
+        }
+        .scroll-indicator span {
+            display: block;
+            width: 2px;
+            height: 40px;
+            background: #fff;
+            margin: 0 auto 10px;
+            border-radius: 2px;
+        }
+
+        /* ===== MOBILE HERO ===== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 25px 60px;
+                height: auto;
+                min-height: 100vh;
+            }
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+                padding-top: 20px;
+            }
+            .hero-image-wrapper {
+                order: 1;
+            }
+            .hero-text {
+                order: 2;
+            }
+            .hero-text h1 {
+                font-size: 48px;
+                letter-spacing: 4px;
+                margin-bottom: 20px;
+            }
+            .hero-text p {
+                font-size: 17px;
+                letter-spacing: 2px;
+                margin-bottom: 35px;
+            }
+            .hero-image {
+                max-width: 100%;
+                width: 90%;
+                height: auto;
+                margin: 0 auto;
+                border-radius: 16px;
+            }
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .scroll-indicator {
+                bottom: 25px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 64px;
+            }
+            .hero-text p {
+                font-size: 19px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== SECTION BASE ===== */
+        section {
+            padding: 120px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 70px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #fff;
+        }
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: black;
+        }
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+            font-size: 17px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+        .about-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .about-content p {
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+        .about-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ===== GENRES SECTION ===== */
+        .genres {
+            background: black;
+            overflow: hidden;
+        }
+        .genres-slider-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .genres-slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px 0 40px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .genres-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .genre-card {
+            min-width: 320px;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+        .genre-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fff 0%, #aaa 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .genre-card:hover::before {
+            transform: scaleX(1);
+        }
+        .genre-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .genre-card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        .genre-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .genre-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .genre-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #bbb;
+            font-weight: 300;
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        .slider-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+        .slider-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .slider-btn:disabled:hover {
+            transform: scale(1);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ===== NUMBERS SECTION ===== */
+        .numbers {
+            background: black;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            text-align: center;
+        }
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            padding: 40px 30px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stat-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #aaa;
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery {
+            background: black;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 16px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+            position: relative;
+        }
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        .gallery-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.15);
+            filter: grayscale(0%);
+        }
+
+        /* ===== VIDEO + TEXT SECTION ===== */
+        .video-text-section {
+            background: black;
+            padding: 120px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .video-text-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .video-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .video-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .video-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .text-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+        .text-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-content h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .text-content p {
+            font-size: 17px;
+            line-height: 2;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        .text-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            background: black;
+            overflow: hidden;
+        }
+        .testimonials-slider-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .testimonials-slider {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px 0 40px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .testimonials-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .testimonial-card {
+            min-width: 350px;
+            max-width: 350px;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+        }
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.05) 100%);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .testimonial-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .testimonial-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #888;
+        }
+        .testimonial-stars {
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        .testimonial-time {
+            font-size: 12px;
+            color: #666;
+        }
+        .testimonial-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #ddd;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .testimonial-reaction {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #999;
+            background: rgba(255,255,255,0.05);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+        .testimonials-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .testimonials-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        .testimonials-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+        .testimonials-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .testimonials-btn:disabled:hover {
+            transform: scale(1);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: black;
+        }
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+        .contact-buttons.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            padding: 22px 45px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+        .contact-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,255,255,0.3);
+        }
+        .contact-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #000;
+            padding: 60px 50px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-bottom: 35px;
+        }
+        .social-links a {
+            color: #fff;
+            font-size: 28px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .social-links a:hover {
+            color: #000;
+            background: #fff;
+            transform: translateY(-5px) rotate(5deg);
+        }
+        .copyright {
+            font-size: 14px;
+            font-weight: 300;
+            color: #777;
+            letter-spacing: 1px;
+        }
+
+        /* ===== RESPONSIVE - TABLET ===== */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .navbar { padding: 20px 40px; }
+            section { padding: 100px 40px; }
+            .section-title { font-size: 44px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { gap: 50px; }
+            .video-text-grid { gap: 60px; }
+        }
+
+        /* ===== RESPONSIVE - MOBILE ===== */
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 25px; }
+            .logo img { height: 70px; width: 100px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            
+            section { padding: 80px 25px; }
+            .section-title { 
+                font-size: 36px; 
+                margin-bottom: 50px;
+            }
+            .section-title::after {
+                width: 60px;
+                height: 2px;
+            }
+            
+            .about-content {
+                font-size: 16px;
+                line-height: 1.9;
+            }
+            
+            .genres-slider-container {
+                padding: 0 10px;
+            }
+            .genre-card {
+                width: 80px;
+                padding: 35px 25px;
+            }
+            .genre-icon {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+            .genre-title {
+                font-size: 22px;
+                margin-bottom: 12px;
+            }
+            .genre-description {
+                font-size: 14px;
+            }
+            .slider-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .testimonials-slider-container {
+                padding: 0 10px;
+            }
+            .testimonial-card {
+                min-width: 300px;
+                max-width: 300px;
+                padding: 25px 20px;
+            }
+            .testimonial-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            .testimonial-name {
+                font-size: 15px;
+            }
+            .testimonial-text {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            .testimonial-stars {
+                font-size: 12px;
+            }
+            .testimonials-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .stats-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            }
+            .stat-item {
+                padding: 30px 20px;
+            }
+            .stat-number {
+                font-size: 52px;
+            }
+            
+            .gallery-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+            }
+            
+            .video-text-section {
+                padding: 80px 25px;
+            }
+            .video-text-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            }
+            .text-content h3 { 
+                font-size: 28px; 
+                margin-bottom: 20px;
+            }
+            .text-content p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+            
+            .contact-buttons { 
+                flex-direction: column; 
+                gap: 20px; 
+            }
+            .contact-btn { 
+                width: 100%; 
+                justify-content: center;
+                padding: 20px 35px;
+            }
+            
+            .footer {
+                padding: 50px 25px;
+            }
+            .social-links {
+                gap: 25px;
+            }
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 38px;
+                letter-spacing: 3px;
+            }
+            .hero-text p {
+                font-size: 15px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .stat-number {
+                font-size: 44px;
+            }
+            .testimonial-card {
+                min-width: 280px;
+                max-width: 280px;
+                padding: 22px 18px;
+            }
+            .testimonial-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .testimonial-name {
+                font-size: 14px;
+            }
+            .testimonial-text {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="change.jpg" alt="DJ Beard Logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#genres">Genres</a></li>
+            <li><a href="#numbers">Numbers</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#video">Video</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#genres">Genres</a>
+        <a href="#numbers">Numbers</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#video">Video</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-image-wrapper">
+                <img src="main2.png" alt="DJ Beard Udaipur" class="hero-image">
+            </div>
+            
+            <div class="hero-text">
+                <h1>DJ Beard</h1>
+                <p>Udaipur's Premier Beat Maestro</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="hero-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        Book Now
+                    </a>
+                    <a href="#about" class="hero-btn secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'})">
+            <span></span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 15L5 10L6.5 8.5L10 12L13.5 8.5L15 10L10 15Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+   <section id="about" class="about">
+  <h2 class="section-title">About</h2>
+  <div class="about-content">
+    <p>With <strong>17 years of experience</strong>, DJ Beard is well known in Udaipur’s music scene. He has performed at a wide range of events, from local gatherings to large weddings, always adapting his music to suit the occasion.</p>
+    <p><strong>Specializing in Bollywood remixes, EDM, and house music</strong>, his sets combine different styles to create a smooth and enjoyable flow. His friendly approach and consistent work have made him a familiar name at many celebrations across Rajasthan.</p>
+    <p>Based in North Ayad, DJ Beard is available for <strong>weddings, corporate events, club nights, and private parties</strong> throughout Rajasthan. Whether the event is small or large, he aims to provide music that fits the mood and keeps the audience engaged.</p>
+  </div>
+</section>
+
+
+    <section id="genres" class="genres">
+        <h2 class="section-title">Musical Genres</h2>
+        <div class="genres-slider-container">
+            <div class="genres-slider">
+                <div class="genre-card">
+                    <span class="genre-icon">🎵</span>
+                    <h3 class="genre-title">Bollywood</h3>
+                    <p class="genre-description">From timeless classics to the latest chartbusters, experience the magic of Indian cinema with electrifying Bollywood remixes and mashups.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">🎧</span>
+                    <h3 class="genre-title">Commercial</h3>
+                    <p class="genre-description">High-energy mainstream hits that pack the dance floor. Perfect blend of international and desi beats for maximum crowd engagement.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">🥁</span>
+                    <h3 class="genre-title">Punjabi</h3>
+                    <p class="genre-description">Dhol beats and bass-heavy tracks that bring pure Punjabi energy. From bhangra classics to modern trap-infused bangers.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">🎤</span>
+                    <h3 class="genre-title">Hip-Hop</h3>
+                    <p class="genre-description">Raw beats and powerful rhythms from underground classics to mainstream hits. Keeping the vibe authentic and the crowd moving.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">🎹</span>
+                    <h3 class="genre-title">R&B</h3>
+                    <p class="genre-description">Smooth grooves and soulful vibes perfect for those mellow moments. From classic slow jams to contemporary R&B flavors.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">🕺</span>
+                    <h3 class="genre-title">English Retro (70s & 80s)</h3>
+                    <p class="genre-description">Disco fever and synthwave nostalgia that transcends generations. Timeless tracks that get everyone on the dance floor.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">⚡</span>
+                    <h3 class="genre-title">Electronic Dance Music (EDM)</h3>
+                    <p class="genre-description">Explosive drops and euphoric builds that create unforgettable moments. From progressive house to big room anthems.</p>
+                </div>
+                
+                <div class="genre-card">
+                    <span class="genre-icon">🔊</span>
+                    <h3 class="genre-title">Techno</h3>
+                    <p class="genre-description">Dark, driving beats for the underground enthusiasts. Hypnotic rhythms that take you on a journey through sound.</p>
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <section id="numbers" class="numbers">
+        <h2 class="section-title">In Numbers</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-label">Events Played</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="17">0</div>
+                <div class="stat-label">Years Active</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="3000">0</div>
+                <div class="stat-label">People Danced</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="pic2.jpg" alt="Gallery 1 - Live Event">
+            </div>
+            <div class="gallery-item">
+                <img src="pic4.jpg" alt="Gallery 2 - DJ Console">
+            </div>
+            <div class="gallery-item">
+                <img src="pic5.jpg" alt="Gallery 3 - Crowd View">
+            </div>
+            <div class="gallery-item">
+                <img src="pic6.jpg" alt="Gallery 4 - Wedding Gig">
+            </div>
+            <div class="gallery-item">
+                <img src="pic7.jpg" alt="Gallery 5 - Night Club">
+            </div>
+            <div class="gallery-item">
+                <img src="pic8.jpg" alt="Gallery 6 - Equipment Setup">
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="video-text-section">
+        <h2 class="section-title">Featured Performance</h2>
+        <div class="video-text-grid">
+            <div class="video-wrapper">
+                <video autoplay loop muted playsinline poster="video-poster.jpg">
+                    <source src="mainvid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="text-content">
+                <h3>Live at Udaipur Wedding 2025</h3>
+                <p>A high-energy Bollywood + EDM fusion set that kept 800 guests dancing till dawn. This performance showcased the perfect blend of traditional celebration vibes with modern electronic beats.</p>
+                <p>From classic retro hits to the latest chartbusters — DJ Beard knows how to own the dance floor and create magical moments that guests will remember forever.</p>
+                <p><strong>Book now</strong> for your wedding, sangeet, or corporate event and experience the difference that 17 years of expertise can make.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonials-slider-container">
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JK</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">JK Events and Decoration</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">7 months ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Amazing and superb dj.....best mixing bollywood, techno, gujarati, panjabi etc.</p>
+                    <span class="testimonial-reaction">❤️ 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">KL</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Kavita Lur</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">9 months ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Bollywood and retro superbbbb mix</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">DS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Devkishan Suthar</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">9 months ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best dj in town superrrbbb dj👌👌👌</p>
+                    <span class="testimonial-reaction">❤️ 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SG</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Shubham Garg</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">10 months ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Good work</p>
+                    <span class="testimonial-reaction">❤️ 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">BD</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Bharat Delawat</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">10 months ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Eight works</p>
+                    <span class="testimonial-reaction">❤️ 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">LP</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Love Paliwal</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best quality & super work......</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">AM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Anchor Mohit Sharma</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Dj Beard Udaipur....One of the very Enthusiastic Dj in udaipur 🎊🔥 Full on power pack Performer 🔥</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Mahendra Singh</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best in town👌😊</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">CS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Chetan Sahu</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Superbbbb👌</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">VB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Vishal Barber</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Amazing dj</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">GP</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Ganesh Paliwal</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Superrbb</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SK</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sanjay Kothari</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best in town👌</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">YJ</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Yudhishtar Jatoliya</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">To cool dj with high quality sound system</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">VV</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Vannv Vaishnav</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Great</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">KD</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Krishan Das</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best dj</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">DM</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Deepu Mali</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">2 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best dj in udaipur 👌👌👌</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">KP</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Kiran Paliwal</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">3 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Excellent service, Professional audio visual equipment rental in udaipur city.</p>
+                    <span class="testimonial-reaction">❤️ 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SC</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sunil Chittora</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">3 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Superrebbb dj</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">VA</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Viking Art</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">3 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">One of the best service provider in udaipur, in budjet</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">VP</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Vijay Paliwal</div>
+                            <div class="testimonial-meta">
+                                <span class="testimonial-stars">★★★★★</span>
+                                <span class="testimonial-time">3 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Best dj in udaipur 👌👌👌</p>
+                    <span class="testimonial-reaction">🙏 1</span>
+                </div>
+            </div>
+            
+           
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Book DJ Beard</h2>
+        <div class="contact-buttons">
+            <a href="mailto:djbeard@example.com" class="contact-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Email Me</span>
+            </a>
+            <a href="tel:+918824222123" class="contact-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Call 8824222123</span>
+            </a>
+            <a href="https://wa.me/+918824222123" class="contact-btn" style="background: #25D366; color: #fff;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/dj_beard_udaipur123/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/p/DJ-Beard-Udaipur-100063892758523/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/8824222123" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="copyright">© 2025 DJ Beard | 226 North Ayad, Udaipur | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Mobile menu link clicks
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.section-title, .about-content, .stat-item, .gallery-item, .contact-buttons, .video-wrapper, .text-content, .genre-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for statistics
+        let countersAnimated = false;
+        
+        const animateCounters = () => {
+            if (countersAnimated) return;
+            
+            document.querySelectorAll('.stat-number').forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const duration = 2500;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.round(current).toLocaleString() + '+';
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString() + '+';
+                    }
+                };
+                
+                updateCounter();
+            });
+            
+            countersAnimated = true;
+        };
+
+        // Observer specifically for the numbers section
+        const numbersObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+            }
+        }, { threshold: 0.5 });
+
+        const numbersSection = document.querySelector('.numbers');
+        if (numbersSection) {
+            numbersObserver.observe(numbersSection);
+        }
+
+        // Video autoplay and volume control
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.video-wrapper video');
+            if (video) {
+                video.volume = 0.3;
+                video.play().catch(() => {
+                    console.log('Autoplay prevented by browser');
+                });
+            }
+        });
+
+        // Smooth scroll for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to hero image on desktop
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroImage = document.querySelector('.hero-image');
+                if (heroImage && scrolled < window.innerHeight) {
+                    heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+            });
+        }
+
+        // Lazy loading for gallery images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add active state to navbar links based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
