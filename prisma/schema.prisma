@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Booking enquiries submitted through the website contact form.
+model Booking {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  eventType     String
+  eventDate     String
+  eventLocation String
+  requirements  String?
+  status        String   @default("new") // new | contacted | confirmed | closed
+  createdAt     DateTime @default(now())
+}
