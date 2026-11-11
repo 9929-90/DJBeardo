@@ -44,7 +44,7 @@ export function Reveal({ children, className = "", variant = "up", delay = 0, as
   const variantClass =
     variant === "fade" ? "reveal-fade" : variant === "left" ? "reveal-left" : variant === "right" ? "reveal-right" : variant === "zoom" ? "reveal-zoom" : "";
 
-  const Tag = as as keyof JSX.IntrinsicElements;
+  const Tag: any = as;
   return (
     <Tag
       ref={ref as any}
