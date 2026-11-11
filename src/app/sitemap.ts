@@ -3,6 +3,8 @@ import { SITE } from "@/lib/site";
 import { SERVICES } from "@/lib/data";
 import { BLOG_POSTS } from "@/lib/blog";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url;
   const now = new Date();
