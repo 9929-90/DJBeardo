@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import type { JSX } from "react";
 
 type RevealProps = {
   children: ReactNode;
