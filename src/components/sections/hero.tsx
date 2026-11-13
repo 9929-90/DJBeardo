@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SITE, waLink } from "@/lib/site";
+import { waLink } from "@/lib/site";
 
 /**
  * Cinematic hero — elegant two-column composition.
@@ -32,7 +31,7 @@ export function Hero() {
       )
         .fromTo(
           ".hero-title-line",
-          { yPercent: 110, opacity: 0 },
+          { yPercent: 130, opacity: 0 },
           { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.09 },
           0.25
         )
@@ -98,48 +97,41 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-[98px] sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:pb-32 lg:pt-[76px]">
-        {/* LEFT — text composition (nudged 24px above the centered baseline) */}
-        <div className="relative z-10 order-2 translate-y-[-24px] lg:order-1">
-          <p className="hero-eyebrow text-eyebrow opacity-0">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-14 pt-[96px] sm:px-8 lg:min-h-[86vh] lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:pb-28 lg:pt-[80px]">
+        {/* LEFT — text composition (nudged 30px above the centered baseline) */}
+        <div className="relative z-10 order-2 translate-y-[-30px] lg:order-1">
+          <p className="hero-eyebrow text-eyebrow text-[10px] opacity-80">
             <span className="mr-3 inline-block h-px w-8 translate-y-[-3px] bg-[var(--violet-soft)]/60" aria-hidden="true" />
             Udaipur · Rajasthan · Since 2008
           </p>
 
-          <h1 className="text-hero-title mt-4 overflow-hidden text-[clamp(2.45rem,7.2vw,5.35rem)]">
-            <span className="block overflow-hidden">
+          <h1 className="text-hero-title mt-4 text-[clamp(2.4rem,7.4vw,5.4rem)]">
+            <span className="-mb-[0.16em] block overflow-hidden pb-[0.16em]">
               <span className="hero-title-line block opacity-0">DJ BEARD</span>
             </span>
           </h1>
 
-          <p className="hero-sub mt-3.5 text-[15px] font-light tracking-[0.14em] text-zinc-300 opacity-0 sm:text-lg">
+          <p className="hero-sub mt-3 text-base font-light tracking-[0.14em] text-zinc-300 opacity-0 sm:text-lg">
             Professional DJ in Udaipur
           </p>
 
-          <p className="hero-copy mt-5 max-w-[26rem] text-[14px] leading-[1.75] text-zinc-400 opacity-0 sm:text-[15px]">
+          <p className="hero-copy mt-5 max-w-[32rem] text-sm leading-relaxed text-zinc-400 opacity-0 sm:text-[15px]">
             Creating unforgettable music experiences, electrifying performances and extraordinary
             celebrations — for weddings, parties and events across Udaipur and Rajasthan for over
             seventeen years.
           </p>
 
-          <div className="hero-cta mt-8 flex flex-wrap items-center gap-3.5 opacity-0">
-            <Link href="/contact" className="btn-primary">
-              Book DJ Beard
-            </Link>
-            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-outline">
-              WhatsApp Enquiry
+          <div className="hero-cta mt-7 flex flex-wrap items-center gap-3.5 opacity-0">
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm">
+              Book Now
             </a>
-            <Link
-              href="/about"
-              className="group inline-flex min-h-[42px] items-center gap-2 text-[11.5px] font-medium uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-zinc-200"
-            >
-              Explore Experience
-              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
+            <a href="#meet" className="btn-outline btn-sm">
+              Explore
+            </a>
           </div>
 
           {/* verified experience highlights */}
-          <dl className="hero-proof mt-8 grid max-w-md grid-cols-3 gap-6 opacity-0 border-t border-white/[0.07] pt-5">
+          <dl className="hero-proof mt-8 grid max-w-md grid-cols-3 gap-5 opacity-0 border-t border-white/[0.07] pt-5">
             {[
               ["17+", "Years Live"],
               ["500+", "Events Played"],
@@ -148,7 +140,7 @@ export function Hero() {
               <div key={label}>
                 <dt className="sr-only">{label}</dt>
                 <dd className="text-xl font-light text-white sm:text-2xl">{value}</dd>
-                <dd className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+                <dd className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500">
                   {label}
                 </dd>
               </div>
@@ -160,7 +152,7 @@ export function Hero() {
             atmosphere and bloom sit BEHIND the figure so it occludes light,
             the silhouette dissolves into darkness at the bottom. */}
         <div className="relative order-1 lg:order-2" aria-hidden="false">
-          <div className="hero-portrait relative mx-auto max-w-[400px] opacity-0 sm:max-w-[430px] lg:max-w-[520px]">
+          <div className="hero-portrait relative mx-auto max-w-[290px] opacity-0 sm:max-w-[400px] lg:max-w-[460px]">
             {/* stage haze behind the figure */}
             <div
               className="pointer-events-none absolute -inset-[18%]"
@@ -172,11 +164,11 @@ export function Hero() {
             />
             {/* bloom that follows the silhouette (blurred screen-blend copy) */}
             <Image
-              src="/media/photos/hero-dj-beard-cutout.webp"
+              src="/media/photos/hero-portrait.webp"
               alt=""
               aria-hidden="true"
-              width={1379}
-              height={2000}
+              width={1500}
+              height={2602}
               className="pointer-events-none absolute inset-0 h-auto w-full select-none mix-blend-screen"
               style={{
                 filter: "blur(26px) saturate(1.12) brightness(1.02)",
@@ -187,14 +179,14 @@ export function Hero() {
                 maskImage:
                   "linear-gradient(180deg, black 0%, black 78%, transparent 94%)",
               }}
-              sizes="(max-width: 1024px) 78vw, (max-width: 1536px) 40vw, 520px"
+              sizes="(max-width: 1024px) 80vw, 44vw"
             />
             {/* the cutout itself — bottom dissolves into the page darkness */}
             <Image
-              src="/media/photos/hero-dj-beard-cutout.webp"
-              alt="DJ Beard — professional DJ in Udaipur — in a black suit with headphones around his neck"
-              width={1379}
-              height={2000}
+              src="/media/photos/hero-portrait.webp"
+              alt="DJ Beard — professional DJ in Udaipur — wearing a black cap and holding his headphones"
+              width={1500}
+              height={2602}
               priority
               fetchPriority="high"
               className="relative h-auto w-full select-none"
@@ -204,7 +196,7 @@ export function Hero() {
                 maskImage:
                   "linear-gradient(180deg, black 0%, black 80%, transparent 97%)",
               }}
-              sizes="(max-width: 1024px) 78vw, (max-width: 1536px) 40vw, 520px"
+              sizes="(max-width: 1024px) 80vw, 44vw"
             />
             {/* ground dissolve — swallows silhouette, bloom and haze into
                 the page darkness so nothing ends on a visible edge */}

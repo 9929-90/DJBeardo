@@ -209,14 +209,14 @@
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  min-height: 42px;
-  padding: 0.62rem 1.55rem;
+  min-height: 44px;
+  padding: 0.8rem 2rem;
   border-radius: 9999px;
   background: var(--violet-brand);
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -230,14 +230,14 @@
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  min-height: 42px;
-  padding: 0.62rem 1.55rem;
+  min-height: 44px;
+  padding: 0.8rem 2rem;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #f4f4f5;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
@@ -246,42 +246,32 @@
   background: rgba(139, 92, 246, 0.08);
   transform: translateY(-2px);
 }
+/* compact CTA variant — hero only */
+.btn-sm {
+  min-height: 40px;
+  padding: 0.6rem 1.55rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+}
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  min-height: 42px;
-  padding: 0.62rem 1.55rem;
+  min-height: 44px;
+  padding: 0.8rem 2rem;
   border-radius: 9999px;
   background: #1faa53;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 .btn-whatsapp:hover {
   background: #25c25f;
   transform: translateY(-2px);
-}
-
-/* ---------- Marquee (genres strip) ---------- */
-@keyframes marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-.animate-marquee {
-  animation: marquee 42s linear infinite;
-  will-change: transform;
-}
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-}
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee { animation: none; }
 }
 
 /* ---------- Custom scrollbar ---------- */
@@ -306,26 +296,3 @@
   backdrop-filter: blur(8px);
   background: rgba(3, 3, 5, 0.92);
 }
-
-/* ---------- Form fields ---------- */
-.field {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
-  font-size: 0.9375rem;
-  color: #f4f4f5;
-  transition: border-color 0.25s ease, background 0.25s ease;
-  min-height: 46px;
-}
-.field::placeholder { color: #6b6b76; }
-.field:focus {
-  outline: none;
-  border-color: rgba(167, 139, 250, 0.6);
-  background: rgba(139, 92, 246, 0.05);
-}
-.field-error { border-color: rgba(239, 68, 68, 0.65); }
-
-/* Native date picker icon visibility on dark */
-.field::-webkit-calendar-picker-indicator { filter: invert(0.8); cursor: pointer; }

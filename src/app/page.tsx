@@ -17,7 +17,7 @@ import { SITE } from "@/lib/site";
 import { JsonLd } from "@/components/layout/page-header";
 
 export const metadata: Metadata = {
-  title: "DJ Beard — Best DJ in Udaipur | Professional DJ for Weddings, Parties & Events",
+  title: { absolute: "DJ Beard | Best DJ in Udaipur" },
   description:
     "Looking for the best DJ in Udaipur? DJ Beard brings 17+ years of experience to weddings, sangeets, corporate events, club nights and private parties across Rajasthan. Book now — +91 88242 22123.",
   alternates: { canonical: "/" },

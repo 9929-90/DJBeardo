@@ -46,7 +46,6 @@ export function PhotoTile({
   priority = false,
   sizes = "(max-width: 768px) 92vw, (max-width: 1280px) 46vw, 30vw",
   className = "",
-  position = "center",
 }: {
   src: string;
   alt: string;
@@ -55,8 +54,6 @@ export function PhotoTile({
   priority?: boolean;
   sizes?: string;
   className?: string;
-  /** object-position for portrait sources cropped by landscape tiles */
-  position?: string;
 }) {
   return (
     <figure className={`group relative overflow-hidden rounded-xl border border-white/[0.06] ${className}`}>
@@ -68,7 +65,6 @@ export function PhotoTile({
           sizes={sizes}
           priority={priority}
           className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-          style={{ objectPosition: position }}
         />
       </div>
       {caption ? (

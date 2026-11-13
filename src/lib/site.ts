@@ -8,6 +8,9 @@ export const SITE = {
   phoneDisplay: "+91 88242 22123",
   phoneRaw: "+918824222123",
   whatsapp: "918824222123",
+  // Verified business email — left empty until an official address is confirmed.
+  // The contact page hides the Email option while this is empty.
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
   address: {
     street: "226 North Ayad",
     city: "Udaipur",
@@ -33,6 +36,9 @@ export const SITE = {
     "Corporate event DJ Udaipur",
     "DJ for events in Udaipur",
     "Sangeet DJ Udaipur",
+    "Festive DJ in Udaipur",
+    "Holi DJ in Udaipur",
+    "Pioneer CDJ DJ in Udaipur",
   ],
   // Placeholders — replace via environment variables in production.
   analytics: {
@@ -42,8 +48,15 @@ export const SITE = {
 } as const;
 
 export const WHATSAPP_BOOKING_MESSAGE =
-  "Hello DJ Beard! I would like to enquire about DJ booking for my event in Udaipur.";
+  "Hello DJ Beard, I would like to enquire about booking you for an upcoming event in Udaipur.";
 
 export function waLink(message: string = WHATSAPP_BOOKING_MESSAGE) {
   return `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+
+/** WhatsApp link prefilled for a specific service enquiry. */
+export function waServiceLink(serviceName: string) {
+  return waLink(
+    `Hello DJ Beard, I would like to enquire about booking you for an upcoming event in Udaipur — specifically your ${serviceName} service.`
+  );
 }

@@ -30,7 +30,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "best-dj-in-udaipur-what-to-look-for-before-booking",
     title: "Best DJ in Udaipur: What to Look for Before Booking a DJ",
-    metaTitle: "Best DJ in Udaipur — 8 Things to Check Before You Book | DJ Beard",
+    metaTitle: "Best DJ in Udaipur — 8 Things to Check Before You Book",
     metaDescription:
       "Searching for the best DJ in Udaipur? This practical guide covers experience, equipment, music range, reviews and booking tips so your Udaipur event gets the DJ it deserves.",
     excerpt:
@@ -38,8 +38,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Guides",
     date: "2026-10-12",
     readMinutes: 7,
-    featuredImage: "/media/photos/crowd-festival-lasers.webp",
-    featuredImageAlt: "Light beams sweeping over a massive open-air crowd during a DJ performance in Udaipur",
+    featuredImage: "/media/photos/perf-rooftop-lake.webp",
+    featuredImageAlt: "DJ Beard performing on a rooftop venue overlooking Lake Pichola in Udaipur",
     keyword: "Best DJ in Udaipur",
     cta: "Planning an event in Udaipur? Check availability with DJ Beard — 17+ years of live experience across Rajasthan.",
     sections: [
@@ -124,7 +124,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "how-to-choose-the-right-dj-for-your-event-in-udaipur",
     title: "How to Choose the Right DJ for Your Event in Udaipur",
-    metaTitle: "How to Choose a DJ for Your Event in Udaipur — Simple Guide | DJ Beard",
+    metaTitle: "How to Choose a DJ for Your Event in Udaipur — Simple Guide",
     metaDescription:
       "Choosing a DJ for an event in Udaipur? Learn how to match a DJ's style, setup and process to your occasion — from weddings and sangeets to birthdays and corporate nights.",
     excerpt:
@@ -132,8 +132,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Guides",
     date: "2026-10-05",
     readMinutes: 6,
-    featuredImage: "/media/photos/console-hands-club.webp",
-    featuredImageAlt: "DJ hands mixing on a professional mixer during a live event",
+    featuredImage: "/media/photos/perf-console-dandiya.webp",
+    featuredImageAlt: "DJ console close-up during a live event performance in Udaipur",
     keyword: "DJ for events in Udaipur",
     cta: "Not sure which setup your event needs? Ask DJ Beard directly on WhatsApp for an honest recommendation.",
     sections: [
@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "dj-booking-in-udaipur-everything-you-should-know",
     title: "DJ Booking in Udaipur: Everything You Should Know",
-    metaTitle: "DJ Booking in Udaipur — Process, Pricing & Timings Explained | DJ Beard",
+    metaTitle: "DJ Booking in Udaipur — Process, Pricing & Timings Explained",
     metaDescription:
       "How does DJ booking in Udaipur actually work? From enquiry to confirmation, pricing factors to sound checks — a transparent walkthrough by a 17+ year Udaipur DJ.",
     excerpt:
@@ -202,8 +202,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Planning",
     date: "2026-09-24",
     readMinutes: 7,
-    featuredImage: "/media/photos/baraat-dhol-night.webp",
-    featuredImageAlt: "Dhol drummers performing at a vibrant baraat procession",
+    featuredImage: "/media/photos/bts-garden.webp",
+    featuredImageAlt: "Behind the scenes of a DJ setup being prepared at a garden event in Udaipur",
     keyword: "DJ booking Udaipur",
     cta: "Ready to lock your date? Send DJ Beard your event details on WhatsApp for availability and a clear quotation.",
     sections: [
@@ -279,7 +279,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "how-to-plan-an-unforgettable-music-experience-for-your-event",
     title: "How to Plan an Unforgettable Music Experience for Your Event",
-    metaTitle: "How to Plan an Unforgettable Music Experience for Your Event | DJ Beard",
+    metaTitle: "How to Plan an Unforgettable Music Experience for Your Event",
     metaDescription:
       "Great events are scored, not just decorated. Learn how to plan the music arc of your celebration — pacing, key moments, genre flow and working with your DJ.",
     excerpt:
@@ -287,8 +287,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Planning",
     date: "2026-09-10",
     readMinutes: 6,
-    featuredImage: "/media/photos/sangeet-family-dance.webp",
-    featuredImageAlt: "Family guests dancing together at a beautifully decorated sangeet celebration",
+    featuredImage: "/media/photos/moment-sangeet-dance.webp",
+    featuredImageAlt: "Guests dancing joyfully at a sangeet celebration in Udaipur",
     keyword: "event music planning Udaipur",
     cta: "Want a music plan built around your celebration? Book a planning call with DJ Beard.",
     sections: [
@@ -343,7 +343,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "what-makes-a-professional-dj-performance-memorable",
     title: "What Makes a Professional DJ Performance Memorable?",
-    metaTitle: "What Makes a Professional DJ Performance Memorable? | DJ Beard",
+    metaTitle: "What Makes a Professional DJ Performance Memorable?",
     metaDescription:
       "Beyond the gear and the lights — what actually separates a memorable professional DJ performance from a night of shuffled songs? A 17+ year Udaipur DJ explains.",
     excerpt:
@@ -351,8 +351,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Guides",
     date: "2026-08-28",
     readMinutes: 6,
-    featuredImage: "/media/photos/crowd-booth-purple.webp",
-    featuredImageAlt: "Crowd with raised hands beside a DJ booth glowing in purple light during a live performance",
+    featuredImage: "/media/photos/perf-stage-silhouette.webp",
+    featuredImageAlt: "DJ Beard silhouetted on stage with dramatic lighting during a memorable live performance",
     keyword: "professional DJ performance",
     cta: "Experience the difference live — book DJ Beard for your next celebration in Udaipur.",
     sections: [
@@ -402,7 +402,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "understanding-different-music-genres-and-dj-performance-styles",
     title: "Understanding Different Music Genres and DJ Performance Styles",
-    metaTitle: "Music Genres & DJ Styles Explained for Your Event | DJ Beard Udaipur",
+    metaTitle: "Music Genres & DJ Styles Explained for Your Event",
     metaDescription:
       "Bollywood, Punjabi, EDM, house, techno, hip-hop and retro — what each genre brings to an event, and how different DJ performance styles change the mood of your floor.",
     excerpt:
@@ -410,8 +410,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Guides",
     date: "2026-08-12",
     readMinutes: 7,
-    featuredImage: "/media/photos/dj-pads-closeup.webp",
-    featuredImageAlt: "Performance pads on a DJ controller glowing in colour during a live set",
+    featuredImage: "/media/photos/perf-pads.webp",
+    featuredImageAlt: "Performance pads on a DJ controller lit in colour during a live genre-blending set",
     keyword: "DJ music genres explained",
     cta: "Not sure which genre mix suits your guests? DJ Beard will build the blend with you — ask on WhatsApp.",
     sections: [
@@ -473,7 +473,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "how-to-choose-the-right-music-for-your-celebration",
     title: "How to Choose the Right Music for Your Celebration",
-    metaTitle: "How to Choose the Right Music for Your Celebration | DJ Beard",
+    metaTitle: "How to Choose the Right Music for Your Celebration",
     metaDescription:
       "The right music choices make celebrations unforgettable. Learn how to match songs to moments, guests and moods — practical tips from a professional Udaipur DJ.",
     excerpt:
@@ -481,8 +481,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Planning",
     date: "2026-07-30",
     readMinutes: 5,
-    featuredImage: "/media/photos/party-warm-crowd.webp",
-    featuredImageAlt: "Guests dancing together at a warm-lit private celebration",
+    featuredImage: "/media/photos/portrait-cap-studio.webp",
+    featuredImageAlt: "DJ Beard wearing headphones in a studio portrait, planning a music set",
     keyword: "choosing celebration music",
     cta: "Get a music plan shaped around your family and friends — enquire with DJ Beard for your Udaipur celebration.",
     sections: [
@@ -526,7 +526,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "a-guide-to-planning-a-dj-experience-in-udaipur",
     title: "A Guide to Planning a DJ Experience in Udaipur",
-    metaTitle: "Planning a DJ Experience in Udaipur — Venue to Setlist | DJ Beard",
+    metaTitle: "Planning a DJ Experience in Udaipur — Venue to Setlist",
     metaDescription:
       "From lakeside venues and palace courtyards to sound checks and setlists — the complete guide to planning a DJ experience in Udaipur, the city of celebrations.",
     excerpt:
@@ -534,8 +534,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Planning",
     date: "2026-07-14",
     readMinutes: 7,
-    featuredImage: "/media/photos/lake-laser-fortress.webp",
-    featuredImageAlt: "Laser beams over a lakeside fortress during a night celebration in Udaipur",
+    featuredImage: "/media/photos/venue-lake-laser.webp",
+    featuredImageAlt: "Laser lights over Lake Pichola during a night event in Udaipur",
     keyword: "DJ experience in Udaipur",
     cta: "Planning a celebration in the City of Lakes? Talk to DJ Beard — Udaipur's own, 17+ years on stage.",
     sections: [

@@ -7,12 +7,12 @@ import { BLOG_POSTS, CATEGORIES } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "DJ Blog Udaipur — Booking Guides, Wedding Music & Event Planning",
+  title: "Blog",
   description:
     "Practical guides from a 17+ year Udaipur DJ — how to book a DJ, wedding music planning, sangeet tips, genre guides and everything about DJ events in Udaipur.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "DJ Beard Blog — Guides for Events in Udaipur",
+    title: "DJ Beard | Blog",
     description:
       "Practical guides on DJ booking, wedding music and event planning — written by a professional DJ in Udaipur.",
     url: `${SITE.url}/blog`,

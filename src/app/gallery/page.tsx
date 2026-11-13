@@ -5,12 +5,12 @@ import { CtaBand } from "@/components/sections/home-sections";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Gallery — DJ Performance Photos & Videos in Udaipur",
+  title: "Gallery",
   description:
     "Selected photographs and performance videos of DJ Beard — live DJ performances, palace weddings, rooftop parties and festival crowds across Udaipur and Rajasthan.",
   alternates: { canonical: "/gallery" },
   openGraph: {
-    title: "DJ Beard Gallery — DJ Performance Udaipur",
+    title: "DJ Beard | Gallery",
     description:
       "Selected photographs and videos from DJ Beard's live performances across Udaipur and Rajasthan.",
     url: `${SITE.url}/gallery`,
@@ -39,7 +39,7 @@ export default function GalleryPage() {
         title="Frames from the floor"
         intro="A curated selection — rooftop sets above the lakes, palace weddings, festival crowds and club nights. Photographs and video, straight from real events."
         crumbs={crumbs}
-        image="/media/photos/lake-laser-blue.webp"
+        image="/media/photos/perf-magenta.webp"
       />
 
       <section className="pb-24 pt-4 sm:pb-28" aria-label="DJ performance gallery">

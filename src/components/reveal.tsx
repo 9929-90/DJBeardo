@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
-import type { JSX } from "react";
+import { useEffect, useRef, type ReactNode, type ElementType } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -44,7 +43,7 @@ export function Reveal({ children, className = "", variant = "up", delay = 0, as
   const variantClass =
     variant === "fade" ? "reveal-fade" : variant === "left" ? "reveal-left" : variant === "right" ? "reveal-right" : variant === "zoom" ? "reveal-zoom" : "";
 
-  const Tag: any = as;
+  const Tag = as as ElementType;
   return (
     <Tag
       ref={ref as any}

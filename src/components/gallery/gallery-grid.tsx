@@ -7,7 +7,7 @@ import { PlayIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 type Item =
-  | { kind: "photo"; src: string; alt: string; caption: string; ratio: string; span?: string }
+  | { kind: "photo"; src: string; alt: string; caption: string; ratio: string; span?: string; badge?: string }
   | { kind: "video"; src: string; poster: string; alt: string; caption: string; ratio: string; span?: string };
 
 const ITEMS: Item[] = [
@@ -18,6 +18,7 @@ const ITEMS: Item[] = [
     caption: p.caption,
     ratio: p.ratio === "portrait" ? "aspect-[3/4]" : "aspect-[4/3]",
     span: p.span === "wide" ? "sm:col-span-2" : undefined,
+    badge: p.badge,
   })),
   ...GALLERY_VIDEOS.map((v) => ({
     kind: "video" as const,
@@ -116,6 +117,11 @@ export function GalleryGrid() {
             {item.kind === "video" ? (
               <span className="absolute left-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm">
                 <PlayIcon className="ml-0.5 h-3.5 w-3.5" />
+              </span>
+            ) : null}
+            {item.kind === "photo" && item.badge ? (
+              <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-[var(--violet-brand)]/50 bg-black/60 px-3 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.16em] text-[var(--violet-soft)] backdrop-blur-sm">
+                {item.badge}
               </span>
             ) : null}
             <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-5 pt-14 text-[13px] font-light tracking-[0.06em] text-zinc-200">

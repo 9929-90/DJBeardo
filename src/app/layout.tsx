@@ -17,8 +17,8 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "DJ Beard — Best DJ in Udaipur | Professional DJ for Weddings, Parties & Events",
-    template: "%s | DJ Beard — DJ in Udaipur",
+    default: "DJ Beard | Best DJ in Udaipur",
+    template: "DJ Beard | %s",
   },
   description: SITE.description,
   keywords: [...SITE.keywords],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE.url,
     siteName: SITE.name,
-    title: "DJ Beard — Best DJ in Udaipur",
+    title: "DJ Beard | Best DJ in Udaipur",
     description: SITE.description,
     images: [
       {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DJ Beard — Best DJ in Udaipur",
+    title: "DJ Beard | Best DJ in Udaipur",
     description: SITE.description,
     images: ["/og/og-image.jpg"],
   },
@@ -79,7 +79,7 @@ const organizationJsonLd = {
   alternateName: "DJ Beard",
   url: SITE.url,
   image: `${SITE.url}/og/og-image.jpg`,
-  logo: `${SITE.url}/brand/logo-full.png`,
+  logo: `${SITE.url}/brand/logo-beard.png`,
   description: SITE.description,
   telephone: SITE.phoneRaw,
   priceRange: "₹₹",

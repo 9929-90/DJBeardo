@@ -6,7 +6,7 @@ import { Breadcrumbs, JsonLd } from "@/components/layout/page-header";
 import { Reveal } from "@/components/reveal";
 import { CtaBand } from "@/components/sections/home-sections";
 import { BLOG_POSTS, AUTHOR, type BlogPost } from "@/lib/blog";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
-      title: post.metaTitle,
+      title: `DJ Beard | ${post.metaTitle}`,
       description: post.metaDescription,
       url: `${SITE.url}/blog/${post.slug}`,
       publishedTime: post.date,
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: post.metaTitle,
+      title: `DJ Beard | ${post.metaTitle}`,
       description: post.metaDescription,
       images: [post.featuredImage],
     },
@@ -210,9 +210,9 @@ export default async function BlogPostPage({ params }: Params) {
               <p className="text-eyebrow">Ready when you are</p>
               <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-zinc-300">{post.cta}</p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-                <Link href="/contact" className="btn-primary">
+                <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
                   Book DJ Beard
-                </Link>
+                </a>
                 <a href={`tel:${SITE.phoneRaw}`} className="btn-outline">
                   Call {SITE.phoneDisplay}
                 </a>

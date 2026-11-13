@@ -69,19 +69,32 @@ export function Navbar() {
           className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8"
           aria-label="Main navigation"
         >
-          {/* Brand: the logo is the ONLY brand identity — no extra text label */}
-          <Link href="/" aria-label="DJ Beard — home" className="relative flex items-center py-2">
+          {/* Brand: new emblem logo + wordmark, vertically centered as one unit */}
+          <Link
+            href="/"
+            aria-label="DJ Beard — home"
+            className="relative flex items-center gap-3.5 py-2"
+          >
             <Image
               src="/brand/logo-beard.png"
               alt="DJ Beard logo — professional DJ in Udaipur"
-              width={626}
-              height={301}
+              width={1243}
+              height={1591}
               priority
               className={cn(
                 "w-auto transition-all duration-500",
-                scrolled ? "h-12" : "h-14"
+                scrolled ? "h-10" : "h-12"
               )}
             />
+            <span className="flex flex-col justify-center transition-all duration-500">
+              <span className="text-[17px] uppercase leading-none tracking-[0.3em] text-white">
+                <span className="font-semibold">DJ</span>
+                <span className="font-light"> Beard</span>
+              </span>
+              <span className="mt-2 text-[9px] font-medium uppercase leading-none tracking-[0.42em] text-[var(--violet-soft)]">
+                Udaipur
+              </span>
+            </span>
           </Link>
 
           {/* Desktop links */}
@@ -108,9 +121,9 @@ export function Navbar() {
           </ul>
 
           <div className="hidden lg:block">
-            <Link href="/contact" className="btn-primary !py-2.5 !px-6 text-[11px]">
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-primary !py-2.5 !px-6 text-[11px]">
               Book Now
-            </Link>
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -176,9 +189,9 @@ export function Navbar() {
           )}
           style={{ transitionDelay: open ? "520ms" : "0ms" }}
         >
-          <Link href="/contact" className="btn-primary w-full">
+          <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-primary w-full">
             Book DJ Beard
-          </Link>
+          </a>
           <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">
             WhatsApp {SITE.phoneDisplay}
           </a>

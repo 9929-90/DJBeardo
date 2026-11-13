@@ -4,19 +4,20 @@ import Image from "next/image";
 import { PageHeader, JsonLd } from "@/components/layout/page-header";
 import { Reveal } from "@/components/reveal";
 import { CtaBand, FaqSection } from "@/components/sections/home-sections";
+import { ServicesPageEquipment } from "@/components/sections/equipment";
 import { SERVICES, FAQS } from "@/lib/data";
-import { SITE } from "@/lib/site";
+import { SITE, waServiceLink } from "@/lib/site";
 import { CheckIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "DJ Services in Udaipur — Weddings, Parties, Corporate & Club Nights",
+  title: "DJ Services in Udaipur",
   description:
-    "Professional DJ services in Udaipur: wedding & sangeet DJ, party DJ, corporate event DJ and club nights across Rajasthan. Sound & lighting available. Book DJ Beard — 17+ years of experience.",
+    "Professional DJ services in Udaipur: wedding & sangeet DJ, party DJ, corporate event DJ, club nights and festive celebrations. Book DJ Beard — 17+ years of experience.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "DJ Services in Udaipur — DJ Beard",
+    title: "DJ Beard | DJ Services in Udaipur",
     description:
-      "Wedding DJ, party DJ, corporate event DJ and club nights across Udaipur and Rajasthan — with professional sound and lighting.",
+      "Wedding DJ, party DJ, corporate event DJ, club nights and festive celebrations across Udaipur and Rajasthan — backed by Pioneer equipment expertise.",
     url: `${SITE.url}/services`,
   },
 };
@@ -53,9 +54,9 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="DJ services in Udaipur, built around your celebration"
-        intro="Four core services, one professional standard — every event gets music programming, professional equipment and crowd-first energy."
+        intro="One professional, one standard — live music programming, premium performance energy and a floor that stays full, whatever the occasion."
         crumbs={crumbs}
-        image="/media/photos/console-red-booth.webp"
+        image="/media/photos/perf-pads.webp"
       />
 
       <section className="py-20 sm:py-24" aria-label="DJ services list">
@@ -100,9 +101,14 @@ export default function ServicesPage() {
                     <Link href={`/services/${s.slug}`} className="btn-outline !py-2.5">
                       Explore {s.name.split(" ")[0]} service
                     </Link>
-                    <Link href="/contact" className="btn-primary !py-2.5">
-                      Check availability
-                    </Link>
+                    <a
+                      href={waServiceLink(s.name)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary !py-2.5"
+                    >
+                      Book {s.name.split(" ")[0]} DJ
+                    </a>
                   </div>
                 </div>
               </article>
@@ -111,21 +117,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Expansion note */}
-      <section className="border-y border-white/[0.05] bg-[#07070a] py-16" aria-label="Additional services">
-        <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <Reveal>
-            <p className="text-eyebrow">Also available on request</p>
-            <h2 className="mt-4 text-2xl font-light text-white sm:text-3xl">
-              Sound &amp; lighting production, LED setups, dhol partnerships and anchor coordination
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-[14.5px] leading-relaxed text-zinc-400">
-              These add-ons are arranged with trusted partners as part of your event plan. Tell us
-              what your celebration needs and you will receive one clear, itemised quotation.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      {/* Professional DJ Equipment & Setup */}
+      <ServicesPageEquipment />
 
       <FaqSection limit={6} />
       <CtaBand />

@@ -5,20 +5,20 @@ import { PageHeader, JsonLd } from "@/components/layout/page-header";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading, PhotoTile } from "@/components/sections/shared";
 import { CtaBand, FaqSection } from "@/components/sections/home-sections";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 import { GENRES } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About DJ Beard — Professional DJ Artist in Udaipur",
+  title: "About",
   description:
     "Meet DJ Beard — a professional DJ artist in Udaipur with 17+ years of experience. Discover his journey, musical style and the performances that made him a trusted name across Rajasthan.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About DJ Beard — Professional DJ Artist in Udaipur",
+    title: "DJ Beard | About",
     description:
       "17+ years of performances across Udaipur and Rajasthan — the story, style and experience of DJ Beard.",
     url: `${SITE.url}/about`,
-    images: [{ url: "/media/photos/beard-mic-portrait.webp", width: 1709, height: 2000, alt: "DJ Beard portrait with wireless microphone" }],
+    images: [{ url: "/media/photos/portrait-profile-mic.webp", width: 1367, height: 1600, alt: "DJ Beard portrait" }],
   },
 };
 
@@ -36,7 +36,7 @@ const personJsonLd = {
   description:
     "Professional DJ in Udaipur with 17+ years of experience performing at weddings, sangeets, corporate events, club nights and private parties across Rajasthan.",
   url: `${SITE.url}/about`,
-  image: `${SITE.url}/media/photos/beard-mic-portrait.webp`,
+  image: `${SITE.url}/media/photos/portrait-profile-mic.webp`,
   worksFor: { "@id": `${SITE.url}/#business` },
   homeLocation: {
     "@type": "Place",
@@ -72,7 +72,7 @@ export default function AboutPage() {
         title="The story behind the decks"
         intro="Seventeen years, hundreds of celebrations, one philosophy — the music follows the crowd, never the other way around."
         crumbs={crumbs}
-        image="/media/photos/beard-mic-portrait.webp"
+        image="/media/photos/portrait-profile-mic.webp"
       />
 
       {/* Story */}
@@ -133,26 +133,24 @@ export default function AboutPage() {
 
           <Reveal variant="right" className="space-y-5">
             <PhotoTile
-              src="/media/photos/beard-daytime-console.webp"
-              alt="DJ Beard at a daytime festival console set up in an open field venue"
-              caption="On the decks, wherever the celebration is"
+              src="/media/photos/portrait-rooftop-dj.webp"
+              alt="DJ Beard performing at a rooftop DJ setup overlooking Udaipur city"
+              caption="On the decks above the city"
               ratio="aspect-[4/3]"
               sizes="(max-width: 1024px) 92vw, 44vw"
             />
             <div className="grid grid-cols-2 gap-5">
               <PhotoTile
-                src="/media/photos/beard-magenta-portrait.webp"
-                alt="DJ Beard performing under vivid magenta stage light"
+                src="/media/photos/portrait-hoodie-pink-stage.webp"
+                alt="DJ Beard performing under pink stage lights in his signature hoodie"
                 ratio="aspect-[3/4]"
                 sizes="(max-width: 1024px) 46vw, 22vw"
-                position="center 22%"
               />
               <PhotoTile
-                src="/media/photos/beard-cap-portrait.webp"
-                alt="DJ Beard in a black jacket and cap holding a wireless microphone"
+                src="/media/photos/bts-poolside.webp"
+                alt="DJ Beard at a resort poolside setup before an evening performance"
                 ratio="aspect-[3/4]"
                 sizes="(max-width: 1024px) 46vw, 22vw"
-                position="center 20%"
               />
             </div>
           </Reveal>
@@ -252,11 +250,10 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={180} className="mt-10">
               <PhotoTile
-                src="/media/photos/fireworks-waterfront.webp"
-                alt="Fireworks bursting over a waterfront city at a grand night celebration"
-                caption="Landmark venues, landmark nights"
+                src="/media/photos/venue-palace-purple.webp"
+                alt="Heritage palace facade illuminated in purple at a night celebration in Udaipur"
+                caption="Heritage venues, modern sound"
                 ratio="aspect-[16/10]"
-                position="center 55%"
               />
             </Reveal>
           </div>
@@ -285,6 +282,47 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </div>
+          {/* Momento — recognition highlight */}
+          <Reveal className="mt-14">
+            <div
+              id="recognition"
+              className="mx-auto grid max-w-5xl scroll-mt-28 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
+            >
+              <div className="relative">
+                <div
+                  className="absolute -inset-4 rounded-3xl"
+                  aria-hidden="true"
+                  style={{ background: "radial-gradient(62% 62% at 50% 42%, rgba(139,92,246,0.16), transparent 72%)" }}
+                />
+                <PhotoTile
+                  src="/media/photos/moment-award-ovation-jaipur.webp"
+                  alt="DJ Beard holding the Sound Innovation-1 medal and certificate alongside a fellow awardee at the OVATION-1 Annual Meet in Jaipur"
+                  caption="Sound Innovation-1 — OVATION-1 Annual Meet, Jaipur"
+                  ratio="aspect-[3/2]"
+                  sizes="(max-width: 1024px) 92vw, 46vw"
+                  className="ring-1 ring-[var(--violet-brand)]/40"
+                />
+                <span className="absolute -top-4 left-5 z-10 inline-flex items-center gap-1.5 rounded-full border border-[var(--violet-brand)]/50 bg-[#0b0812]/95 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--violet-soft)] shadow-[0_10px_28px_rgba(0,0,0,0.5)]">
+                  Industry recognition
+                </span>
+              </div>
+              <div>
+                <p className="text-eyebrow">Recognition</p>
+                <h3 className="mt-3 text-2xl font-light leading-snug text-white">
+                  Honoured by the industry, on and off the stage
+                </h3>
+                <p className="mt-4 text-[14.5px] leading-relaxed text-zinc-400">
+                  At the OVATION-1 Annual Meet in Jaipur, DJ Beard was felicitated with the
+                  Sound Innovation-1 memento — a medal and certificate presented by the
+                  professional sound community he has worked alongside for years.
+                </p>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-zinc-400">
+                  The recognition reflects the same standard he brings to every event: clean,
+                  innovative sound and a performance that respects both the craft and the crowd.
+                </p>
+              </div>
+            </div>
+          </Reveal>
           <Reveal className="mx-auto mt-12 max-w-2xl text-center">
             <p className="text-[14px] leading-relaxed text-zinc-500">
               Booking enquiries are answered personally. Call{" "}
@@ -292,9 +330,14 @@ export default function AboutPage() {
                 {SITE.phoneDisplay}
               </a>{" "}
               or{" "}
-              <Link href="/contact" className="text-[var(--violet-soft)] underline-offset-4 hover:underline">
-                send a booking request
-              </Link>
+              <a
+                href={waLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--violet-soft)] underline-offset-4 hover:underline"
+              >
+                send a WhatsApp booking request
+              </a>
               .
             </p>
           </Reveal>

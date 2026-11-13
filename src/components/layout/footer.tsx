@@ -19,14 +19,27 @@ export function Footer() {
         <div className="grid gap-12 pb-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
           {/* Brand */}
           <div>
-            <Link href="/" aria-label="DJ Beard — home" className="inline-block">
+            <Link
+              href="/"
+              aria-label="DJ Beard — home"
+              className="inline-flex items-center gap-4"
+            >
               <Image
                 src="/brand/logo-beard.png"
                 alt="DJ Beard logo — best DJ in Udaipur"
-                width={626}
-                height={301}
-                className="h-14 w-auto"
+                width={1243}
+                height={1591}
+                className="h-16 w-auto"
               />
+              <span className="flex flex-col justify-center">
+                <span className="text-[22px] uppercase leading-none tracking-[0.32em] text-white">
+                  <span className="font-semibold">DJ</span>
+                  <span className="font-light text-zinc-300"> Beard</span>
+                </span>
+                <span className="mt-2.5 text-[10px] font-medium uppercase leading-none tracking-[0.42em] text-[var(--violet-soft)]">
+                  Udaipur · Rajasthan
+                </span>
+              </span>
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-zinc-400">
               Professional DJ in Udaipur with 17+ years of experience — weddings, sangeets, corporate
@@ -98,6 +111,11 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/equipment" className="text-zinc-400 transition-colors hover:text-white">
+                  DJ Equipment &amp; Setup
+                </Link>
+              </li>
               <li>
                 <Link href="/contact" className="text-zinc-400 transition-colors hover:text-white">
                   DJ Booking in Udaipur

@@ -7,7 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { CtaBand } from "@/components/sections/home-sections";
 import { PhotoTile } from "@/components/sections/shared";
 import { SERVICES } from "@/lib/data";
-import { SITE, waLink } from "@/lib/site";
+import { SITE, waServiceLink } from "@/lib/site";
 import { CheckIcon } from "@/components/icons";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description: service.metaDescription,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: service.metaTitle,
+      title: `DJ Beard | ${service.metaTitle}`,
       description: service.metaDescription,
-      url: `${SITE.url}/services/${service.slug}`,
+      url: `${SITE.url}/services/${service.slug}/`,
       images: [{ url: service.image, width: 1200, height: 800, alt: service.imageAlt }],
     },
   };
@@ -56,7 +56,7 @@ export default async function ServicePage({ params }: Params) {
       { "@type": "State", name: "Rajasthan" },
     ],
     description: service.metaDescription,
-    url: `${SITE.url}/services/${service.slug}`,
+    url: `${SITE.url}/services/${service.slug}/`,
     image: `${SITE.url}${service.image}`,
   };
 
@@ -105,11 +105,16 @@ export default async function ServicePage({ params }: Params) {
               </ul>
             </Reveal>
             <Reveal delay={180} className="mt-10 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
-                Enquire &amp; Book
-              </Link>
-              <a href={waLink(`Hello DJ Beard! I'm interested in your ${service.name} service for an event in Udaipur.`)} target="_blank" rel="noopener noreferrer" className="btn-outline">
-                WhatsApp Enquiry
+              <a
+                href={waServiceLink(service.name)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp"
+              >
+                Book on WhatsApp
+              </a>
+              <a href={`tel:${SITE.phoneRaw}`} className="btn-outline">
+                Call {SITE.phoneDisplay}
               </a>
             </Reveal>
           </div>
@@ -129,7 +134,7 @@ export default async function ServicePage({ params }: Params) {
                 <h3 className="text-eyebrow !text-zinc-500">Good to know</h3>
                 <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-zinc-400">
                   <li>• Performances across Udaipur city and all of Rajasthan — travel planned into the quotation.</li>
-                  <li>• Sound &amp; lighting scaled to your venue, from compact rigs to full production.</li>
+                  <li>• Performance audio scaled to your venue — tuned for the room before guests arrive.</li>
                   <li>• Setups completed and sound-checked well before the first guest arrives.</li>
                   <li>• Must-play / do-not-play lists and event cues planned in advance.</li>
                 </ul>

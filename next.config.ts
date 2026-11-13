@@ -1,24 +1,19 @@
-
 import type { NextConfig } from "next";
 
+/**
+ * Static export configuration — the site is fully static for GitHub Pages.
+ * - `output: "export"` writes plain HTML/CSS/JS to `out/`.
+ * - `trailingSlash` gives directory-style URLs (`/about/`) that GitHub Pages
+ *   serves correctly, including direct access and refresh.
+ * - Images are pre-optimized WebP in /public, so the Next image optimizer
+ *   (server-only) is disabled via `unoptimized`.
+ */
 const nextConfig: NextConfig = {
-  // GitHub Pages static export
   output: "export",
   trailingSlash: true,
-
-  // Static image support
   images: {
     unoptimized: true,
-    formats: ["image/avif", "image/webp"],
-    deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920, 2560, 3840],
-    imageSizes: [96, 128, 192, 256, 320, 384, 480, 560, 640, 768, 960],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
-
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-
   reactStrictMode: false,
 };
 

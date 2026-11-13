@@ -3,20 +3,21 @@ import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading, PhotoTile, MoreLink } from "./shared";
 import { GENRES, SERVICES, TESTIMONIALS, FAQS } from "@/lib/data";
-import { CheckIcon } from "@/components/icons";
+import { SITE, waLink } from "@/lib/site";
+import { ArrowRight, CheckIcon } from "@/components/icons";
 
 /* ============ MEET DJ BEARD ============ */
 export function MeetBeard() {
   return (
-    <section className="relative py-24 sm:py-32" aria-labelledby="meet-beard">
+    <section id="meet" className="relative scroll-mt-24 py-24 sm:py-32" aria-labelledby="meet-beard">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <Reveal variant="left" className="relative">
           <div className="relative overflow-hidden rounded-2xl border border-white/[0.07]">
             <Image
-              src="/media/photos/beard-console-portrait.webp"
-              alt="DJ Beard behind the decks at his console — best DJ in Udaipur"
-              width={1805}
-              height={2400}
+              src="/media/photos/portrait-decks-closeup.webp"
+              alt="Close-up of DJ Beard mixing on a Pioneer CDJ during a live night performance — professional DJ in Udaipur"
+              width={1280}
+              height={1280}
               className="h-auto w-full object-cover"
               sizes="(max-width: 1024px) 92vw, 44vw"
             />
@@ -65,6 +66,32 @@ export function MeetBeard() {
               </p>
             </div>
           </Reveal>
+          {/* Momento — industry recognition highlight */}
+          <Reveal delay={160} className="mt-8">
+            <Link
+              href="/about#recognition"
+              className="card-surface group flex items-center gap-4 rounded-2xl p-4 transition-colors duration-300 hover:border-[var(--violet-brand)]/40"
+            >
+              <span className="relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border border-white/[0.08]">
+                <Image
+                  src="/media/photos/moment-award-ovation-jaipur.webp"
+                  alt="DJ Beard receiving the Sound Innovation-1 memento at the OVATION-1 Annual Meet in Jaipur"
+                  fill
+                  sizes="120px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--violet-soft)]">
+                  Industry recognition
+                </span>
+                <span className="mt-1 block text-[14px] leading-snug text-zinc-300">
+                  Honoured with the Sound Innovation-1 memento — OVATION-1 Annual Meet, Jaipur
+                </span>
+              </span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[var(--violet-soft)]" />
+            </Link>
+          </Reveal>
           <Reveal delay={200} className="mt-9">
             <MoreLink href="/about" label="Discover the full story" />
           </Reveal>
@@ -74,11 +101,10 @@ export function MeetBeard() {
   );
 }
 
-/* ============ GENRES MARQUEE ============ */
+/* ============ GENRES — premium card grid ============ */
 export function GenresStrip() {
-  const items = [...GENRES, ...GENRES];
   return (
-    <section className="border-y border-white/[0.05] bg-[#08080b] py-16 sm:py-20" aria-labelledby="genres-heading">
+    <section className="border-y border-white/[0.05] bg-[#08080b] py-24 sm:py-32" aria-labelledby="genres-heading">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-eyebrow">Musical styles</p>
@@ -90,22 +116,40 @@ export function GenresStrip() {
             played from a fixed playlist.
           </p>
         </Reveal>
-      </div>
-      <div className="marquee-mask mt-12 overflow-hidden">
-        <ul className="animate-marquee flex w-max items-stretch gap-4 px-4" aria-label="Music genres">
-          {items.map((g, i) => (
-            <li
-              key={`${g.name}-${i}`}
-              className="card-surface flex min-w-[240px] items-center gap-4 rounded-xl px-6 py-5 transition-colors"
-              aria-hidden={i >= GENRES.length ? "true" : undefined}
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--violet-brand)]/15 text-[13px] font-medium text-[var(--violet-soft)]">
-                {String(i % GENRES.length + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-[15px] font-normal text-white">{g.name}</h3>
-                <p className="mt-0.5 text-[13px] leading-snug text-zinc-500">{g.blurb}</p>
-              </div>
+        <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+          {GENRES.map((g, i) => (
+            <li key={g.name}>
+              <Reveal variant="zoom" delay={(i % 4) * 80} className="h-full">
+                <article className="group relative h-full overflow-hidden rounded-xl border border-white/[0.07] bg-[#0a0a0e] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--violet-brand)]/35">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={g.image}
+                      alt={g.imageAlt}
+                      fill
+                      sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 24vw"
+                      loading="lazy"
+                      className="object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.06]"
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0"
+                      aria-hidden="true"
+                      style={{ background: "linear-gradient(180deg, rgba(5,5,6,0.12), transparent 40%, rgba(5,5,6,0.55))" }}
+                    />
+                    <span
+                      className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-black/45 text-[11px] font-medium text-zinc-200 backdrop-blur-sm"
+                      aria-hidden="true"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <h3 className="text-[15px] font-normal leading-snug text-white transition-colors group-hover:text-[var(--violet-soft)] sm:text-base">
+                      {g.name}
+                    </h3>
+                    <p className="mt-1.5 hidden text-[12.5px] leading-snug text-zinc-500 sm:block">{g.blurb}</p>
+                  </div>
+                </article>
+              </Reveal>
             </li>
           ))}
         </ul>
@@ -190,8 +234,8 @@ export function PerformanceHighlights() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <Reveal variant="zoom" className="sm:col-span-2">
             <PhotoTile
-              src="/media/photos/beard-crowd-openair.webp"
-              alt="Massive open-air crowd at a DJ Beard live performance in Udaipur at night"
+              src="/media/photos/perf-crowd-green.webp"
+              alt="Massive outdoor crowd at a DJ Beard performance — professional DJ in Udaipur"
               caption="City celebration — open air, full volume"
               ratio="aspect-[16/9]"
               sizes="(max-width: 640px) 92vw, 60vw"
@@ -199,36 +243,34 @@ export function PerformanceHighlights() {
           </Reveal>
           <Reveal variant="zoom" delay={120}>
             <PhotoTile
-              src="/media/photos/crowd-booth-purple.webp"
-              alt="Crowd with raised hands beside a DJ booth glowing in purple light"
-              caption="Hands up at the booth"
+              src="/media/photos/perf-rooftop-lake.webp"
+              alt="DJ Beard rooftop performance overlooking Lake Pichola at dusk in Udaipur"
+              caption="Rooftop dusk above Lake Pichola"
               ratio="aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full"
               sizes="(max-width: 640px) 92vw, 32vw"
               className="lg:h-full"
-              position="center 30%"
             />
           </Reveal>
           <Reveal variant="zoom">
             <PhotoTile
-              src="/media/photos/palace-hall-chandeliers.webp"
-              alt="Ornate heritage hall with chandeliers dressed for a grand Udaipur wedding"
+              src="/media/photos/venue-palace-interior.webp"
+              alt="DJ Beard performing at a royal palace wedding venue in Udaipur"
               caption="Palace wedding interiors"
               ratio="aspect-[4/3]"
-              position="center 42%"
             />
           </Reveal>
           <Reveal variant="zoom" delay={100}>
             <PhotoTile
-              src="/media/photos/rooftop-pool-party.webp"
-              alt="Poolside venue glowing in purple light during an evening party set"
-              caption="Poolside, after dark"
+              src="/media/photos/perf-stage-silhouette.webp"
+              alt="DJ Beard silhouetted against stage lights during a live club set in Udaipur"
+              caption="Silhouettes and lasers"
               ratio="aspect-[4/3]"
             />
           </Reveal>
           <Reveal variant="zoom" delay={160}>
             <PhotoTile
-              src="/media/photos/lake-laser-fortress.webp"
-              alt="Laser beams sweeping over a lakeside fortress at a night celebration"
+              src="/media/photos/venue-lake-laser.webp"
+              alt="Laser beams over Lake Pichola during a DJ Beard night event in Udaipur"
               caption="Lasers across the lake"
               ratio="aspect-[4/3]"
             />
@@ -250,11 +292,11 @@ export function ServicesOverview() {
         <SectionHeading
           eyebrow="Services"
           title="One professional, every celebration"
-          intro="Weddings, private parties, corporate events and club nights — each with music programming built around your guests."
+          intro="Weddings, private parties, corporate events, club nights and festive celebrations — each shaped around your guests and your venue."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 90}>
+            <Reveal key={s.slug} delay={(i % 3) * 90}>
               <Link
                 href={`/services/${s.slug}`}
                 className="card-surface group flex h-full flex-col rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1.5"
@@ -272,6 +314,15 @@ export function ServicesOverview() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-10 text-center">
+          <Link
+            href="/equipment"
+            className="group inline-flex min-h-[44px] items-center gap-2 text-[13px] font-medium uppercase tracking-[0.2em] text-[var(--violet-soft)] transition-colors hover:text-white"
+          >
+            Professional DJ Equipment &amp; Setup — Pioneer CDJ expertise
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+          </Link>
+        </Reveal>
       </div>
     </section>
   );
@@ -289,9 +340,9 @@ export function VideoShowcase() {
         />
         <Reveal variant="zoom" className="mx-auto mt-14 max-w-4xl">
           <VideoPlayer
-            src="/media/videos/showcase-night-crowd.mp4"
-            poster="/media/posters/showcase-night-crowd.webp"
-            alt="Party crowd with raised hands under warm amber light at a DJ Beard open-air performance in Udaipur"
+            src="/media/videos/showcase-crowd.mp4"
+            poster="/media/posters/showcase-crowd.webp"
+            alt="Ocean of guests with phone lights at a DJ Beard open-air performance in Udaipur"
           />
         </Reveal>
         <Reveal className="mt-10 text-center">
@@ -326,7 +377,7 @@ export function VideoPlayer({ src, poster, alt }: { src: string; poster: string;
 const WHY = [
   { title: "17+ years of live experience", text: "Half a lifetime behind the decks — from family functions to festival stages across Rajasthan." },
   { title: "Every genre, blended live", text: "Bollywood, Punjabi, EDM, house, retro, hip-hop, R&B and techno — mixed to the room, never from a fixed playlist." },
-  { title: "Professional sound & lighting", text: "Owned, maintained equipment scaled to your venue, with backups staged and setups completed hours before guests arrive." },
+  { title: "Production matched to the venue", text: "Every set is backed by professional audio production scaled to the room — from intimate spaces to palace venues — tuned before guests arrive." },
   { title: "Crowd-first programming", text: "Your family, your friends, your colleagues — the set is shaped around who is actually on the floor, hour by hour." },
 ];
 
@@ -343,9 +394,9 @@ export function WhyChoose() {
               intro="Anyone can play songs. DJ Beard is booked for judgement — knowing exactly what this room, this crowd and this moment need."
             />
             <Reveal delay={150} className="mt-10">
-              <Link href="/contact" className="btn-primary">
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Check Your Date
-              </Link>
+              </a>
             </Reveal>
           </div>
           <ul className="grid gap-5 sm:grid-cols-2">
@@ -437,7 +488,7 @@ export function FaqSection({ limit }: { limit?: number }) {
 /* ============ CTA BAND ============ */
 export function CtaBand({
   title = "Let's make your celebration unforgettable",
-  text = "Share your date, venue and occasion — get availability, an honest recommendation and a clear quotation within hours.",
+  text = "Message on WhatsApp with your date, venue and occasion — get availability, an honest recommendation and a clear quotation within hours.",
 }: {
   title?: string;
   text?: string;
@@ -460,11 +511,11 @@ export function CtaBand({
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-zinc-400">{text}</p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/contact" className="btn-primary">
-              Book DJ Beard
-            </Link>
-            <a href={`tel:+918824222123`} className="btn-outline">
-              Call +91 88242 22123
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
+              WhatsApp Enquiry
+            </a>
+            <a href={`tel:${SITE.phoneRaw}`} className="btn-outline">
+              Call {SITE.phoneDisplay}
             </a>
           </div>
         </Reveal>
