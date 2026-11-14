@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
+import { RecentHighlights } from "@/components/sections/recent-highlights";
 import {
   MeetBeard,
   GenresStrip,
@@ -38,6 +39,7 @@ export default function HomePage() {
     <>
       <JsonLd data={faqJsonLd} />
       <Hero />
+      <RecentHighlights />
       <MeetBeard />
       <GenresStrip />
       <Experience />

@@ -19,24 +19,19 @@ export function Footer() {
         <div className="grid gap-12 pb-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              aria-label="DJ Beard — home"
-              className="inline-flex items-center gap-4"
-            >
+            <Link href="/" aria-label="DJ Beard — home" className="inline-flex items-center gap-3">
               <Image
                 src="/brand/logo-beard.png"
                 alt="DJ Beard logo — best DJ in Udaipur"
-                width={1243}
-                height={1591}
-                className="h-16 w-auto"
+                width={581}
+                height={760}
+                className="h-12 w-auto"
               />
-              <span className="flex flex-col justify-center">
-                <span className="text-[22px] uppercase leading-none tracking-[0.32em] text-white">
-                  <span className="font-semibold">DJ</span>
-                  <span className="font-light text-zinc-300"> Beard</span>
+              <span className="flex flex-col justify-center gap-1.5">
+                <span className="text-[17px] font-semibold uppercase leading-none tracking-[0.3em] text-white">
+                  DJ Beard
                 </span>
-                <span className="mt-2.5 text-[10px] font-medium uppercase leading-none tracking-[0.42em] text-[var(--violet-soft)]">
+                <span className="text-[9.5px] font-medium uppercase leading-none tracking-[0.42em] text-[var(--violet-soft)]">
                   Udaipur · Rajasthan
                 </span>
               </span>

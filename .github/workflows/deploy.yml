@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+# Builds the static site and publishes it to GitHub Pages on every push to main.
+# One-time manual setup (see README.md):
+#   Repo Settings → Pages → Build and deployment → Source: "GitHub Actions"
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; skip queued runs in favour of the latest.
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static site
+        run: bun run build
+
+      - name: Ensure GitHub Pages support files
+        run: |
+          touch out/.nojekyll
+          if [ ! -f out/CNAME ]; then
+            echo "CNAME missing from build output" >&2
+            exit 1
+          fi
+          echo "Pages output ready: $(ls out | wc -l) entries, CNAME + .nojekyll present"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

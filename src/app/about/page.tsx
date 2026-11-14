@@ -295,9 +295,9 @@ export default function AboutPage() {
                   style={{ background: "radial-gradient(62% 62% at 50% 42%, rgba(139,92,246,0.16), transparent 72%)" }}
                 />
                 <PhotoTile
-                  src="/media/photos/moment-award-ovation-jaipur.webp"
-                  alt="DJ Beard holding the Sound Innovation-1 medal and certificate alongside a fellow awardee at the OVATION-1 Annual Meet in Jaipur"
-                  caption="Sound Innovation-1 — OVATION-1 Annual Meet, Jaipur"
+                  src="/media/photos/moment-award-ovation-kumbhalgarh.webp"
+                  alt="DJ Beard holding the Sound Innovation-1 medal and certificate alongside a fellow awardee at the OVATION-1 Annual Meet in Kumbhalgarh"
+                  caption="Sound Innovation-1 — OVATION-1 Annual Meet, Kumbhalgarh"
                   ratio="aspect-[3/2]"
                   sizes="(max-width: 1024px) 92vw, 46vw"
                   className="ring-1 ring-[var(--violet-brand)]/40"
@@ -312,7 +312,7 @@ export default function AboutPage() {
                   Honoured by the industry, on and off the stage
                 </h3>
                 <p className="mt-4 text-[14.5px] leading-relaxed text-zinc-400">
-                  At the OVATION-1 Annual Meet in Jaipur, DJ Beard was felicitated with the
+                  At the OVATION-1 Annual Meet in Kumbhalgarh, DJ Beard was felicitated with the
                   Sound Innovation-1 memento — a medal and certificate presented by the
                   professional sound community he has worked alongside for years.
                 </p>

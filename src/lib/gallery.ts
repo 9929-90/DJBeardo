@@ -18,6 +18,31 @@ export type GalleryVideo = {
 
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
+    src: "/media/photos/recent-city-palace-festival.webp",
+    alt: "Massive festival crowd under stage lights at the music festival at City Palace with DJ Beard",
+    caption: "City Palace festival — a sea of hands",
+    ratio: "landscape",
+    span: "wide",
+  },
+  {
+    src: "/media/photos/recent-vishal-jetwa.webp",
+    alt: "DJ Beard with Vishal Jetwa during the traditional turban welcome at the event",
+    caption: "With Vishal Jetwa",
+    ratio: "portrait",
+  },
+  {
+    src: "/media/photos/recent-live-sound-academy.webp",
+    alt: "DJ Beard with Sunil Sir at the Live Sound Academy session beside professional audio gear",
+    caption: "Live Sound Academy with Sunil Sir",
+    ratio: "portrait",
+  },
+  {
+    src: "/media/photos/recent-guest-moments.webp",
+    alt: "DJ Beard sharing a warm moment with guests at the venue entrance",
+    caption: "Moments with guests",
+    ratio: "portrait",
+  },
+  {
     src: "/media/photos/venue-stage-live-band.webp",
     alt: "DJ Beard performing on a live stage with a large LED backdrop, a keyboardist and a young performer at the microphone",
     caption: "Live stage — full band, full light",
@@ -25,9 +50,9 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     span: "wide",
   },
   {
-    src: "/media/photos/moment-award-ovation-jaipur.webp",
-    alt: "DJ Beard with the Sound Innovation-1 medal and certificate at the OVATION-1 Annual Meet in Jaipur",
-    caption: "Sound Innovation-1 — Jaipur",
+    src: "/media/photos/moment-award-ovation-kumbhalgarh.webp",
+    alt: "DJ Beard with the Sound Innovation-1 medal and certificate at the OVATION-1 Annual Meet in Kumbhalgarh",
+    caption: "Sound Innovation-1 — Kumbhalgarh",
     ratio: "landscape",
     badge: "Industry recognition",
   },
@@ -137,6 +162,41 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
 ];
 
 export const GALLERY_VIDEOS: GalleryVideo[] = [
+  {
+    src: "/media/videos/recent-31st-night.mp4",
+    poster: "/media/posters/recent-31st-night.webp",
+    alt: "DJ Beard hyping a huge open-air crowd on 31st December night",
+    caption: "31st December night floor",
+    ratio: "portrait",
+  },
+  {
+    src: "/media/videos/recent-foreigner-guest.mp4",
+    poster: "/media/posters/recent-foreigner-guest.webp",
+    alt: "International guests dancing through DJ Beard's club night in Udaipur",
+    caption: "Foreign guests night",
+    ratio: "portrait",
+  },
+  {
+    src: "/media/videos/recent-openair-party.mp4",
+    poster: "/media/posters/recent-openair-party.webp",
+    alt: "Guests dancing under string lights at DJ Beard's open-air party night",
+    caption: "Open-air party strings",
+    ratio: "portrait",
+  },
+  {
+    src: "/media/videos/recent-folk-performance.mp4",
+    poster: "/media/posters/recent-folk-performance.webp",
+    alt: "Folk performers on stage during a wedding night celebration with DJ Beard",
+    caption: "Folk night, live stage",
+    ratio: "landscape",
+  },
+  {
+    src: "/media/videos/recent-grand-stage.mp4",
+    poster: "/media/posters/recent-grand-stage.webp",
+    alt: "Grand stage production with LED screens and a packed ballroom at a DJ Beard show",
+    caption: "Grand stage production",
+    ratio: "landscape",
+  },
   {
     src: "/media/videos/showcase-crowd.mp4",
     poster: "/media/posters/showcase-crowd.webp",

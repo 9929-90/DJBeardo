@@ -69,29 +69,24 @@ export function Navbar() {
           className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8"
           aria-label="Main navigation"
         >
-          {/* Brand: new emblem logo + wordmark, vertically centered as one unit */}
-          <Link
-            href="/"
-            aria-label="DJ Beard — home"
-            className="relative flex items-center gap-3.5 py-2"
-          >
+          {/* Brand: emblem + wordmark + Udaipur tagline */}
+          <Link href="/" aria-label="DJ Beard — home" className="relative flex items-center gap-3 py-2">
             <Image
               src="/brand/logo-beard.png"
               alt="DJ Beard logo — professional DJ in Udaipur"
-              width={1243}
-              height={1591}
+              width={581}
+              height={760}
               priority
               className={cn(
                 "w-auto transition-all duration-500",
                 scrolled ? "h-10" : "h-12"
               )}
             />
-            <span className="flex flex-col justify-center transition-all duration-500">
-              <span className="text-[17px] uppercase leading-none tracking-[0.3em] text-white">
-                <span className="font-semibold">DJ</span>
-                <span className="font-light"> Beard</span>
+            <span className="flex flex-col justify-center gap-1.5">
+              <span className="text-[17px] font-semibold uppercase leading-none tracking-[0.3em] text-white">
+                DJ Beard
               </span>
-              <span className="mt-2 text-[9px] font-medium uppercase leading-none tracking-[0.42em] text-[var(--violet-soft)]">
+              <span className="text-[9.5px] font-medium uppercase leading-none tracking-[0.42em] text-[var(--violet-soft)]">
                 Udaipur
               </span>
             </span>

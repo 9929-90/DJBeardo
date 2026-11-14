@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading, PhotoTile, MoreLink } from "./shared";
 import { GENRES, SERVICES, TESTIMONIALS, FAQS } from "@/lib/data";
@@ -74,8 +75,8 @@ export function MeetBeard() {
             >
               <span className="relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border border-white/[0.08]">
                 <Image
-                  src="/media/photos/moment-award-ovation-jaipur.webp"
-                  alt="DJ Beard receiving the Sound Innovation-1 memento at the OVATION-1 Annual Meet in Jaipur"
+                  src="/media/photos/moment-award-ovation-kumbhalgarh.webp"
+                  alt="DJ Beard receiving the Sound Innovation-1 memento at the OVATION-1 Annual Meet in Kumbhalgarh"
                   fill
                   sizes="120px"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
@@ -86,7 +87,7 @@ export function MeetBeard() {
                   Industry recognition
                 </span>
                 <span className="mt-1 block text-[14px] leading-snug text-zinc-300">
-                  Honoured with the Sound Innovation-1 memento — OVATION-1 Annual Meet, Jaipur
+                  Honoured with the Sound Innovation-1 memento — OVATION-1 Annual Meet, Kumbhalgarh
                 </span>
               </span>
               <ArrowRight className="h-4 w-4 shrink-0 text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[var(--violet-soft)]" />
@@ -112,22 +113,26 @@ export function GenresStrip() {
             Every genre the night demands
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-zinc-400">
-            Bollywood remixes to techno, Punjabi anthems to English retro — blended live, never
-            played from a fixed playlist.
+            Bollywood remixes to techno, Punjabi anthems to English retro — blended live for
+            weddings, clubs and festival stages, never played from a fixed playlist.
           </p>
         </Reveal>
         <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
           {GENRES.map((g, i) => (
-            <li key={g.name}>
+            <li
+              key={g.name}
+              className={g.wide ? "col-span-2 sm:col-span-3 lg:col-span-4" : undefined}
+            >
               <Reveal variant="zoom" delay={(i % 4) * 80} className="h-full">
                 <article className="group relative h-full overflow-hidden rounded-xl border border-white/[0.07] bg-[#0a0a0e] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--violet-brand)]/35">
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className={cn("relative overflow-hidden", g.wide ? "aspect-[4/3] sm:aspect-[3/2]" : "aspect-[4/3]")}>
                     <Image
                       src={g.image}
                       alt={g.imageAlt}
                       fill
-                      sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 24vw"
+                      sizes={g.wide ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw" : "(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 24vw"}
                       loading="lazy"
+                      style={g.wide ? { objectPosition: "50% 22%" } : undefined}
                       className="object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.06]"
                     />
                     <div
@@ -143,10 +148,10 @@ export function GenresStrip() {
                     </span>
                   </div>
                   <div className="p-4 sm:p-5">
-                    <h3 className="text-[15px] font-normal leading-snug text-white transition-colors group-hover:text-[var(--violet-soft)] sm:text-base">
+                    <h3 className={cn("font-normal leading-snug text-white transition-colors group-hover:text-[var(--violet-soft)]", g.wide ? "text-lg sm:text-xl" : "text-[15px] sm:text-base")}>
                       {g.name}
                     </h3>
-                    <p className="mt-1.5 hidden text-[12.5px] leading-snug text-zinc-500 sm:block">{g.blurb}</p>
+                    <p className={cn("mt-1.5 hidden leading-snug text-zinc-500 sm:block", g.wide ? "text-[13.5px]" : "text-[12.5px]")}>{g.blurb}</p>
                   </div>
                 </article>
               </Reveal>
