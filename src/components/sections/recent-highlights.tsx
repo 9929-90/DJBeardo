@@ -1,16 +1,10 @@
-import Image from "next/image";
-import { Reveal } from "@/components/reveal";
-import { SectionHeading } from "./shared";
-import { cn } from "@/lib/utils";
+"use client";
 
-/**
- * Recent Highlights — fresh media straight from DJ Beard's own camera
- * (client-supplied WhatsApp moments, November 2026), placed directly after
- * the hero so visitors see the newest, most authentic proof of work first.
- *
- * Two videos autoplay muted (the client's headline clips); the rest of the
- * videos are click-to-play with posters so the page stays light.
- */
+import Image from "next/image";
+import { useRef, useState } from "react";
+
+import { Reveal } from "@/components/reveal";
+import { cn } from "@/lib/utils";
 
 type Highlight =
   | {
@@ -18,8 +12,6 @@ type Highlight =
       src: string;
       alt: string;
       title: string;
-      badge: string;
-      span: string;
       aspect: string;
       sizes: string;
     }
@@ -29,9 +21,8 @@ type Highlight =
       poster: string;
       alt: string;
       title: string;
-      badge: string;
-      span: string;
       aspect: string;
+      sizes: string;
     }
   | {
       kind: "manual-video";
@@ -39,127 +30,166 @@ type Highlight =
       poster: string;
       alt: string;
       title: string;
-      badge: string;
-      span: string;
       aspect: string;
+      sizes: string;
+      /** caption sits above the play overlay so the title stays visible */
+      titleOnTop?: boolean;
     };
 
+/*
+ * Captions follow the client's own identifications (WhatsApp, 13-14 Nov).
+ * Where the client did not identify a clip, the card keeps a neutral
+ * descriptive title instead of a guessed venue or name.
+ *
+ * Design: every card is the same size (uniform 3/4 grid, five per row on
+ * desktop) — no featured/wide cards, rows always flush and aligned.
+ */
 const HIGHLIGHTS: Highlight[] = [
   {
     kind: "photo",
-    src: "/media/photos/recent-city-palace-festival.webp",
-    alt: "Ocean of guests under stage lights at the music festival at City Palace with DJ Beard",
-    title: "",
-    badge: "Festival crowd",
-    span: "sm:col-span-2 lg:col-span-4",
-    aspect: "aspect-[3/2]",
-    sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw",
+    src: "/media/photos/recent-dandiya-night.webp",
+    alt: "Massive night crowd with raised hands and light beams at DJ Beard's dandiya night celebration",
+    title: "Dandiya Night Celebrations",
+    aspect: "aspect-[3/4]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
     kind: "live-video",
     src: "/media/videos/recent-31st-night.mp4",
     poster: "/media/posters/recent-31st-night.webp",
-    alt: "DJ Beard hyping the crowd on 31st December night — open-air New Year's Eve party",
-    title: "",
-    badge: "New Year's Eve",
-    span: "",
+    alt: "Crowd celebrating at DJ Beard's 31st December night party in Udaipur",
+    title: "For Sunil Grover Sir",
     aspect: "aspect-[3/4]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
     kind: "photo",
     src: "/media/photos/recent-vishal-jetwa.webp",
-    alt: "DJ Beard with Vishal Jetwa during the traditional turban welcome at the event",
-    title: "",
-    badge: "Guest of honour",
-    span: "",
+    alt: "DJ Beard with Vishal Jetwa of the Mardaani movie at an event",
+    title: "With Kheta Khan Sir",
     aspect: "aspect-[3/4]",
-    sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
-    kind: "live-video",
-    src: "/media/videos/recent-foreigner-guest.mp4",
-    poster: "/media/posters/recent-foreigner-guest.webp",
-    alt: "International guests dancing at DJ Beard's club night in Udaipur",
-    title: "",
-    badge: "Club night",
-    span: "",
+    kind: "manual-video",
+    src: "/media/videos/recent-corporate-event.mp4",
+    poster: "/media/posters/recent-corporate-event.webp",
+    alt: "DJ Beard performing at a corporate event",
+    title: "Corporate Event",
     aspect: "aspect-[3/4]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
     kind: "photo",
     src: "/media/photos/recent-live-sound-academy.webp",
-    alt: "DJ Beard with Sunil Sir at the Live Sound Academy session beside professional audio gear",
-    title: "",
-    badge: "Academy session",
-    span: "",
+    alt: "DJ Beard with Sunil sir of the Live Sound Academy",
+    title: "With Mandeep Ramanax",
     aspect: "aspect-[3/4]",
-    sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
     kind: "manual-video",
-    src: "/media/videos/recent-openair-party.mp4",
-    poster: "/media/posters/recent-openair-party.webp",
-    alt: "Guests dancing under string lights at DJ Beard's open-air party night",
-    title: "",
-    badge: "Live set",
-    span: "",
+    src: "/media/videos/recent-crowd-moments.mp4",
+    poster: "/media/posters/recent-crowd-moments.webp",
+    alt: "Crowd moments from a recent DJ Beard live performance",
+    title: "Live Crowd Moments",
     aspect: "aspect-[3/4]",
-  },
-  {
-    kind: "manual-video",
-    src: "/media/videos/recent-folk-performance.mp4",
-    poster: "/media/posters/recent-folk-performance.webp",
-    alt: "Folk performers on stage during a wedding night celebration with DJ Beard",
-    title: "",
-    badge: "Wedding night",
-    span: "sm:col-span-2 lg:col-span-4",
-    aspect: "aspect-[3/2]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
     kind: "photo",
     src: "/media/photos/recent-guest-moments.webp",
-    alt: "DJ Beard sharing a moment with guests at the venue entrance",
-    title: "",
-    badge: "Event memories",
-    span: "",
+    alt: "DJ Beard sharing a moment with a guest at an event",
+    title: "With Vishal Jetwa",
     aspect: "aspect-[3/4]",
-    sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
     kind: "manual-video",
-    src: "/media/videos/recent-grand-stage.mp4",
-    poster: "/media/posters/recent-grand-stage.webp",
-    alt: "Grand stage production with LED screens and a packed ballroom at a DJ Beard live show",
-    title: "",
-    badge: "Live show",
-    span: "sm:col-span-2 lg:col-span-4",
-    aspect: "aspect-[3/2]",
+    src: "/media/videos/recent-live-highlights.mp4",
+    poster: "/media/posters/recent-live-highlights.webp",
+    alt: "Highlights from a recent DJ Beard live performance",
+    title: "Live Performance Highlights",
+    aspect: "aspect-[3/4]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
+  },
+  {
+    kind: "manual-video",
+    src: "/media/videos/recent-kutle-khan.mp4",
+    poster: "/media/posters/recent-kutle-khan.webp",
+    alt: "Kutle Khan performing live with DJ Beard at Taj Aravali Resort",
+    title: "Kutle Khan Live — Taj Aravali Resort",
+    aspect: "aspect-[3/4]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
+    titleOnTop: true,
   },
   {
     kind: "photo",
     src: "/media/photos/recent-award-ovation.webp",
-    alt: "DJ Beard receiving the Sound Innovation-1 memento and certificate at the OVATION-1 Annual Meet in Kumbhalgarh",
-    title: "",
-    badge: "Industry recognition",
-    span: "sm:col-span-2 lg:col-span-6",
-    aspect: "aspect-[3/2] lg:aspect-[16/9]",
-    sizes: "100vw",
+    alt: "DJ Beard receiving the Sound Innovation-1 honour from Udaipur Sound Welfare Sansthan alongside Mega Sound owner Siddhartha Chauhan at Everest Hill Resort, Kumbhalgarh",
+    title:
+      "Sound Innovation-1 — Udaipur Sound Welfare Sansthan · with Mega Sound owner Siddhartha Chauhan · Everest Hill Resort, Kumbhalgarh",
+    aspect: "aspect-[3/4]",
+    sizes: "(max-width: 1024px) 50vw, 20vw",
   },
 ];
 
-function Badge({ children }: { children: string }) {
+function Scrim({ title, above }: { title: string; above?: boolean }) {
   return (
-    <span className="pointer-events-none absolute left-4 top-4 z-10 inline-flex items-center rounded-full border border-[var(--violet-brand)]/50 bg-[#0b0812]/90 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--violet-soft)] shadow-[0_8px_22px_rgba(0,0,0,0.45)]">
-      {children}
-    </span>
+    <div
+      className={cn(
+        "pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent p-5 pt-16",
+        above ? "z-40" : "z-10"
+      )}
+    >
+      <p className="text-[15px] font-medium tracking-[0.05em] text-white">{title}</p>
+    </div>
   );
 }
 
-function Scrim({ title }: { title: string }) {
+function ManualVideo({ item }: { item: Extract<Highlight, { kind: "manual-video" }> }) {
+  const ref = useRef<HTMLVideoElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/90 via-black/35 to-transparent p-5 pt-16">
-      <p className="text-[15px] font-medium tracking-[0.05em] text-white">{title}</p>
-    </div>
+    <button
+      type="button"
+      aria-label={`Play video: ${item.title}`}
+      className="absolute inset-0 z-20 flex items-center justify-center"
+      onClick={(e) => {
+        e.preventDefault();
+        const el = ref.current;
+        if (!el) return;
+        if (el.paused) {
+          void el.play();
+          setPlaying(true);
+        } else {
+          el.pause();
+          setPlaying(false);
+        }
+      }}
+    >
+      <video
+        ref={ref}
+        src={item.src}
+        poster={item.poster}
+        preload="none"
+        playsInline
+        controls={playing}
+        onPause={() => setPlaying(false)}
+        className="h-full w-full object-cover"
+      />
+      {!playing && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 z-30 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-black/55 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+            <path d="M8 5.5v13l11-6.5z" />
+          </svg>
+        </span>
+      )}
+    </button>
   );
 }
 
@@ -171,70 +201,70 @@ function HighlightCard({ item }: { item: Highlight }) {
         item.aspect
       )}
     >
-      <Badge>{item.badge}</Badge>
       {item.kind === "photo" ? (
-        <Image
-          src={item.src}
-          alt={item.alt}
-          fill
-          sizes={item.sizes}
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.045]"
-        />
+        <>
+          <Image
+            src={item.src}
+            alt={item.alt}
+            fill
+            sizes={item.sizes}
+            className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.045]"
+          />
+          <Scrim title={item.title} />
+        </>
       ) : item.kind === "live-video" ? (
-        <video
-          src={item.src}
-          poster={item.poster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label={item.alt}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
-        />
+        <>
+          <video
+            src={item.src}
+            poster={item.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover"
+          />
+          <Scrim title={item.title} />
+        </>
       ) : (
-        <video
-          src={item.src}
-          poster={item.poster}
-          controls
-          playsInline
-          preload="none"
-          aria-label={item.alt}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        <>
+          <ManualVideo item={item} />
+          <Scrim title={item.title} above={item.titleOnTop} />
+        </>
       )}
-      <Scrim title={item.title} />
     </div>
   );
 }
 
 export function RecentHighlights() {
   return (
-    <section id="recent" className="relative scroll-mt-24 py-24 sm:py-32" aria-labelledby="recent-heading">
-      {/* soft violet glow behind the grid */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
-        style={{ background: "radial-gradient(58% 100% at 50% 0%, rgba(139,92,246,0.10), transparent 72%)" }}
-      />
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading
-          eyebrow="Fresh from the decks"
-          title="Recent highlights"
-          intro="Straight from DJ Beard's own camera — festival crowds at City Palace, honoured guests, folk nights, club floors and 31st December open-air energy. Real events. Real people. Real sound."
-        />
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
-          {HIGHLIGHTS.map((item, i) => (
-            <Reveal
-              key={item.title}
-              variant="zoom"
-              delay={(i % 3) * 90}
-              className={cn("h-full", item.span || "lg:col-span-2")}
-            >
-              <HighlightCard item={item} />
-            </Reveal>
+    <section
+      className="bg-[#08070c] py-24 sm:py-32"
+      aria-labelledby="recent-highlights-heading"
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="text-eyebrow">Recent work</p>
+          <h2
+            id="recent-highlights-heading"
+            className="mt-4 text-3xl font-light tracking-[0.04em] text-white sm:text-4xl"
+          >
+            Fresh from the decks
+          </h2>
+          <p className="mt-5 text-[15px] leading-relaxed text-zinc-400">
+            A snapshot of recent nights with DJ Beard — festival crowds, wedding
+            celebrations, corporate galas and club rooms, every one of them mixed live.
+          </p>
+        </Reveal>
+        <ul className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-5">
+          {HIGHLIGHTS.map((item) => (
+            <li key={item.src}>
+              <Reveal variant="zoom" className="h-full">
+                <HighlightCard item={item} />
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

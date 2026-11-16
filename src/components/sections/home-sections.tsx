@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading, PhotoTile, MoreLink } from "./shared";
 import { GENRES, SERVICES, TESTIMONIALS, FAQS } from "@/lib/data";
@@ -113,26 +112,22 @@ export function GenresStrip() {
             Every genre the night demands
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-zinc-400">
-            Bollywood remixes to techno, Punjabi anthems to English retro — blended live for
-            weddings, clubs and festival stages, never played from a fixed playlist.
+            Bollywood remixes to techno, Punjabi anthems to English retro — blended live, never
+            played from a fixed playlist.
           </p>
         </Reveal>
-        <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+        <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 lg:grid-cols-4">
           {GENRES.map((g, i) => (
-            <li
-              key={g.name}
-              className={g.wide ? "col-span-2 sm:col-span-3 lg:col-span-4" : undefined}
-            >
+            <li key={g.name}>
               <Reveal variant="zoom" delay={(i % 4) * 80} className="h-full">
                 <article className="group relative h-full overflow-hidden rounded-xl border border-white/[0.07] bg-[#0a0a0e] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--violet-brand)]/35">
-                  <div className={cn("relative overflow-hidden", g.wide ? "aspect-[4/3] sm:aspect-[3/2]" : "aspect-[4/3]")}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={g.image}
                       alt={g.imageAlt}
                       fill
-                      sizes={g.wide ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw" : "(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 24vw"}
+                      sizes="(max-width: 640px) 46vw, (max-width: 1024px) 23vw, 24vw"
                       loading="lazy"
-                      style={g.wide ? { objectPosition: "50% 22%" } : undefined}
                       className="object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.06]"
                     />
                     <div
@@ -148,10 +143,10 @@ export function GenresStrip() {
                     </span>
                   </div>
                   <div className="p-4 sm:p-5">
-                    <h3 className={cn("font-normal leading-snug text-white transition-colors group-hover:text-[var(--violet-soft)]", g.wide ? "text-lg sm:text-xl" : "text-[15px] sm:text-base")}>
+                    <h3 className="text-[15px] font-normal leading-snug text-white transition-colors group-hover:text-[var(--violet-soft)] sm:text-base">
                       {g.name}
                     </h3>
-                    <p className={cn("mt-1.5 hidden leading-snug text-zinc-500 sm:block", g.wide ? "text-[13.5px]" : "text-[12.5px]")}>{g.blurb}</p>
+                    <p className="mt-1.5 hidden text-[12.5px] leading-snug text-zinc-500 sm:block">{g.blurb}</p>
                   </div>
                 </article>
               </Reveal>
@@ -236,14 +231,14 @@ export function PerformanceHighlights() {
           title="Rooms that remember"
           intro="Lakeside rooftops, palace courtyards, festival stages — a few frames from seventeen years of live performance in Udaipur."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <Reveal variant="zoom" className="sm:col-span-2">
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-5">
+          <Reveal variant="zoom">
             <PhotoTile
               src="/media/photos/perf-crowd-green.webp"
               alt="Massive outdoor crowd at a DJ Beard performance — professional DJ in Udaipur"
               caption="City celebration — open air, full volume"
-              ratio="aspect-[16/9]"
-              sizes="(max-width: 640px) 92vw, 60vw"
+              ratio="aspect-[4/3]"
+              sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 19vw"
             />
           </Reveal>
           <Reveal variant="zoom" delay={120}>
@@ -251,9 +246,8 @@ export function PerformanceHighlights() {
               src="/media/photos/perf-rooftop-lake.webp"
               alt="DJ Beard rooftop performance overlooking Lake Pichola at dusk in Udaipur"
               caption="Rooftop dusk above Lake Pichola"
-              ratio="aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full"
-              sizes="(max-width: 640px) 92vw, 32vw"
-              className="lg:h-full"
+              ratio="aspect-[4/3]"
+              sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 19vw"
             />
           </Reveal>
           <Reveal variant="zoom">
@@ -262,6 +256,7 @@ export function PerformanceHighlights() {
               alt="DJ Beard performing at a royal palace wedding venue in Udaipur"
               caption="Palace wedding interiors"
               ratio="aspect-[4/3]"
+              sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 19vw"
             />
           </Reveal>
           <Reveal variant="zoom" delay={100}>
@@ -270,6 +265,7 @@ export function PerformanceHighlights() {
               alt="DJ Beard silhouetted against stage lights during a live club set in Udaipur"
               caption="Silhouettes and lasers"
               ratio="aspect-[4/3]"
+              sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 19vw"
             />
           </Reveal>
           <Reveal variant="zoom" delay={160}>
@@ -278,6 +274,7 @@ export function PerformanceHighlights() {
               alt="Laser beams over Lake Pichola during a DJ Beard night event in Udaipur"
               caption="Lasers across the lake"
               ratio="aspect-[4/3]"
+              sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 19vw"
             />
           </Reveal>
         </div>

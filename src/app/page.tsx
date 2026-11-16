@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
-import { RecentHighlights } from "@/components/sections/recent-highlights";
 import {
   MeetBeard,
   GenresStrip,
@@ -15,6 +14,7 @@ import {
 } from "@/components/sections/home-sections";
 import { FAQS } from "@/lib/data";
 import { SITE } from "@/lib/site";
+import { RecentHighlights } from "@/components/sections/recent-highlights";
 import { JsonLd } from "@/components/layout/page-header";
 
 export const metadata: Metadata = {
@@ -39,11 +39,11 @@ export default function HomePage() {
     <>
       <JsonLd data={faqJsonLd} />
       <Hero />
-      <RecentHighlights />
       <MeetBeard />
       <GenresStrip />
       <Experience />
       <PerformanceHighlights />
+      <RecentHighlights />
       <ServicesOverview />
       <VideoShowcase />
       <WhyChoose />

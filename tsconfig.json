@@ -43,13 +43,6 @@
     "upload",
     "download",
     "download-app",
-    "work",
-    "examples",
-    "site",
-    "db",
-    "mini-services",
-    "tests",
-    "src/components/ui",
-    "tailwind.config.ts"
+    "work"
   ]
 }

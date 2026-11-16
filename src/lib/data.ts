@@ -199,7 +199,7 @@ export const EQUIPMENT_SETUPS: EquipmentSetup[] = [
   },
 ];
 
-export type Genre = { name: string; blurb: string; image: string; imageAlt: string; wide?: boolean };
+export type Genre = { name: string; blurb: string; image: string; imageAlt: string };
 
 /** Photos are drawn from the supplied event image collection — no stock imagery. */
 export const GENRES: Genre[] = [
@@ -250,13 +250,6 @@ export const GENRES: Genre[] = [
     blurb: "Dark, driving, hypnotic — for underground rooms and dedicated techno nights.",
     image: "/media/posters/techno-night.webp",
     imageAlt: "Close-up of DJ Beard's Pioneer console during a dedicated techno night",
-  },
-  {
-    name: "Holi & Festival Stages",
-    blurb: "The colour-festival special: gulal-soaked Holi sets and open-air festival stages where dhol meets EDM, colour cannons fly and the whole ground moves as one.",
-    image: "/media/photos/genre-holi-festival.webp",
-    imageAlt: "DJ Beard covered in gulal colours mixing a Holi festival set at the console in Udaipur",
-    wide: true,
   },
 ];
 
