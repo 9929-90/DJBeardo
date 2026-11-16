@@ -9,6 +9,8 @@ export type Service = {
   highlights: string[];
   image: string;
   imageAlt: string;
+  /** optional highlighted callout rendered between the intro and the checklist */
+  accent?: { title: string; text: string };
 };
 
 export const SERVICES: Service[] = [
@@ -23,17 +25,22 @@ export const SERVICES: Service[] = [
     description: [
       "A wedding is a once-in-a-lifetime celebration, and the music decides how it feels. As a professional wedding DJ in Udaipur, DJ Beard has spent more than seventeen years scoring every kind of wedding moment — the high-energy baraat entry, the emotional sangeet performances, the mehendi afternoon, the haldi morning and the reception night that carries guests until the very last dance.",
       "Udaipur has become one of India's favourite destination wedding cities, and DJ Beard has performed at many of its most celebrated venues — palace courtyards, lakeside resorts and luxury hotels including The Oberoi Udaivilas, ITC Rajputana properties, Ramada, Udai Kothi, Kumbhalgarh and Bhairavgarh Palace. Every set is planned around your ceremony schedule, your family's preferences and the crowd in front of him.",
-      "From Bollywood classics and Punjabi dhol-driven anthems to retro favourites and modern EDM drops, the music flows with the ceremony — never against it. Sound levels are tuned for each moment: warm and conversational during rituals, powerful and celebratory on the dance floor.",
+      "From Bollywood classics and Punjabi dhol-driven anthems to retro favourites and modern EDM drops, the music flows with the ceremony — never against it. Sound levels are tuned for each moment: warm and conversational during rituals, powerful and celebratory on the dance floor. For the dance-floor peaks, DJ Beard also plays DJ-with-percussion sets — a live percussionist jamming over the mix, turning the booth into a full live act.",
     ],
     highlights: [
       "Sangeet, mehendi, haldi, baraat & reception coverage",
       "Destination weddings across Udaipur, Kumbhalgarh & Nathdwara",
       "Coordination with wedding planners, anchors & choreographers",
       "Bollywood, Punjabi, retro & EDM tailored to your guest mix",
+      "DJ with percussion — live dhol, tabla or drums over the decks",
       "Premium audio production suited to palace venues",
     ],
     image: "/media/photos/venue-stage-live-band.webp",
     imageAlt: "DJ Beard performing on a wedding stage with a large LED backdrop, live keyboardist and a young performer at the microphone",
+    accent: {
+      title: "DJ with percussion",
+      text: "A live percussionist jamming over the mix — dhol, tabla or drums — turning the dance-floor peaks into a full live act.",
+    },
   },
   {
     slug: "party-dj",

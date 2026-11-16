@@ -37,12 +37,19 @@ type Highlight =
     };
 
 /*
- * Captions follow the client's own identifications (WhatsApp, 13-14 Nov).
+ * Captions follow the client's own identifications (WhatsApp, 13-16 Nov).
  * Where the client did not identify a clip, the card keeps a neutral
  * descriptive title instead of a guessed venue or name.
  *
  * Design: every card is the same size (uniform 3/4 grid, five per row on
  * desktop) — no featured/wide cards, rows always flush and aligned.
+ *
+ * 16 Nov: the Corporate Event, Live Crowd Moments and Live Performance
+ * Highlights clips were replaced by the client's new batch — Sukhwinder
+ * - at Mementos by ITC Hotels, Live Sound Academy with Sunil Sir, and
+ * Music Festival at City Palace (identifications from WhatsApp, 16 Nov).
+ * The Sukhwinder clip is cropped slightly so the OnePlus camera watermark
+ * is out of frame.
  */
 const HIGHLIGHTS: Highlight[] = [
   {
@@ -72,27 +79,28 @@ const HIGHLIGHTS: Highlight[] = [
   },
   {
     kind: "manual-video",
-    src: "/media/videos/recent-corporate-event.mp4",
-    poster: "/media/posters/recent-corporate-event.webp",
-    alt: "DJ Beard performing at a corporate event",
-    title: "Corporate Event",
+    src: "/media/videos/recent-sukhwinder-mementos.mp4",
+    poster: "/media/posters/recent-sukhwinder-mementos.webp",
+    alt: "Live band performing on the Jai Ho stage at Mementos by ITC Hotels with DJ Beard",
+    title: "Sukhwinder Paji - at Mementos by ITC Hotels",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
+    titleOnTop: true,  
+
   },
   {
     kind: "photo",
     src: "/media/photos/recent-live-sound-academy.webp",
     alt: "DJ Beard with Sunil sir of the Live Sound Academy",
-    title: "With Mandeep Ramanax",
+    title: "With Mandeep Ramanax Sir",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
-    kind: "manual-video",
-    src: "/media/videos/recent-crowd-moments.mp4",
-    poster: "/media/posters/recent-crowd-moments.webp",
-    alt: "Crowd moments from a recent DJ Beard live performance",
-    title: "Live Crowd Moments",
+    kind: "photo",
+    src: "/media/photos/recent-academy-sunil.webp",
+    alt: "DJ Beard with Sunil sir at the Live Sound Academy",
+    title: "Live Sound Academy with Sunil Sir",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
   },
@@ -100,16 +108,15 @@ const HIGHLIGHTS: Highlight[] = [
     kind: "photo",
     src: "/media/photos/recent-guest-moments.webp",
     alt: "DJ Beard sharing a moment with a guest at an event",
-    title: "With Vishal Jetwa",
+    title: "With Vishal Jetwa Sir",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
   },
   {
-    kind: "manual-video",
-    src: "/media/videos/recent-live-highlights.mp4",
-    poster: "/media/posters/recent-live-highlights.webp",
-    alt: "Highlights from a recent DJ Beard live performance",
-    title: "Live Performance Highlights",
+    kind: "photo",
+    src: "/media/photos/recent-city-palace-festival.webp",
+    alt: "DJ Beard with guests at the Udaipur World Music Festival at City Palace",
+    title: "Music Festival at City Palace",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
   },
@@ -118,7 +125,7 @@ const HIGHLIGHTS: Highlight[] = [
     src: "/media/videos/recent-kutle-khan.mp4",
     poster: "/media/posters/recent-kutle-khan.webp",
     alt: "Kutle Khan performing live with DJ Beard at Taj Aravali Resort",
-    title: "Kutle Khan Live — Taj Aravali Resort",
+    title: "Kutle Khan Sir Live — Taj Aravali Resort",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
     titleOnTop: true,
@@ -128,7 +135,7 @@ const HIGHLIGHTS: Highlight[] = [
     src: "/media/photos/recent-award-ovation.webp",
     alt: "DJ Beard receiving the Sound Innovation-1 honour from Udaipur Sound Welfare Sansthan alongside Mega Sound owner Siddhartha Chauhan at Everest Hill Resort, Kumbhalgarh",
     title:
-      "Sound Innovation-1 — Udaipur Sound Welfare Sansthan · with Mega Sound owner Siddhartha Chauhan · Everest Hill Resort, Kumbhalgarh",
+      "Sound Innovation-1 — With Mega Sound owner Siddhartha Chauhan Sir · Everest Hill Resort, Kumbhalgarh",
     aspect: "aspect-[3/4]",
     sizes: "(max-width: 1024px) 50vw, 20vw",
   },
