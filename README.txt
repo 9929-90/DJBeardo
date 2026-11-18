@@ -92,6 +92,34 @@ show above their play buttons (Sukhwinder's added on request, 16 Nov).
       public/media/photos/poolside-dj-centred.webp (3:4, face + mixer
       centred).
     Files: src/app/about/page.tsx (tile srcs).
+14. Home page — genres grid (17 Nov): the "Commercial House" card image
+    (perf-magenta.webp) lost the whole head to the 4/3 tile crop. New
+    crop public/media/photos/magenta-house-set.webp (4:3 band from the
+    top of the source) — head, beard, headphones and hoodie now visible.
+    Files: src/lib/data.ts (genre image + alt).
+15. Sound on videos (17 Nov): every looping video now has a SPEAKER
+    BUTTON (bottom-right of the tile) — one tap unmutes it and the sound
+    plays. Browsers refuse to autoplay clips with sound, so clips still
+    start silent (that cannot be bypassed); the tap-to-hear button is on
+    all 10 gallery video tiles, the home "recent highlights" live clip
+    and the home video player. The gallery LIGHTBOX now opens videos
+    unmuted with full controls (the tile click authorises the sound).
+    Click-to-play cards already played with sound — unchanged.
+    Files: src/components/video-sound.tsx (new shared component),
+           src/components/gallery/gallery-grid.tsx,
+           src/components/sections/recent-highlights.tsx,
+           src/components/sections/home-sections.tsx.
+16. (17 Nov, follow-up) Audio audit of every video (ffprobe): NONE of
+    the files are corrupted. Clips WITH full AAC audio: all four gallery
+    clips (big-stage, full-floor, jai-ho, ballroom) + all three recent
+    clips (sukhwinder, 31st-night, kutle-khan) — speaker buttons work
+    on these. Clips with NO audio stream at all (silent from day one,
+    shipped as template b-roll): showcase-crowd, techno-night,
+    sangeet-bhairavgarh, party-energy, oberoi-udaivilas, crowd-bambhole.
+    The speaker button no longer appears on those (it had nothing to
+    unmute); they play as silent loops. To give them sound, send the
+    originals WITH audio and they can be swapped in.
+    Files: src/lib/gallery.ts (SILENT_VIDEOS list) + item 15 files.
 
 TO APPLY
 --------
@@ -106,6 +134,7 @@ TO APPLY
    - src/components/sections/recent-highlights.tsx   (replaces existing)
    - src/components/sections/home-sections.tsx       (replaces existing)
    - src/components/gallery/gallery-grid.tsx         (replaces existing)
+   - src/components/video-sound.tsx                  (new)
    - src/app/page.tsx                                (replaces existing)
    - tsconfig.json                                   (replaces existing)
    - public/media/videos/recent-sukhwinder-mementos.mp4      (new)
@@ -117,6 +146,7 @@ TO APPLY
    - public/media/photos/festive-holi-colours.webp           (new)
    - public/media/photos/rooftop-dj-city.webp                (new)
    - public/media/photos/poolside-dj-centred.webp            (new)
+   - public/media/photos/magenta-house-set.webp              (new)
    - public/media/equipment/pioneer-cdj-2000nxs2.webp        (replaces existing)
    - public/media/videos/gallery-big-stage.mp4               (new)
    - public/media/videos/gallery-full-floor.mp4              (new)

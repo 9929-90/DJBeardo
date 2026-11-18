@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { SoundLoopVideo } from "@/components/video-sound";
+import { SILENT_VIDEOS } from "@/lib/gallery";
 import { useRef, useState } from "react";
 
 import { Reveal } from "@/components/reveal";
@@ -220,15 +222,13 @@ function HighlightCard({ item }: { item: Highlight }) {
         </>
       ) : item.kind === "live-video" ? (
         <>
-          <video
+          <SoundLoopVideo
             src={item.src}
             poster={item.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
+            alt={item.title}
             className="h-full w-full object-cover"
+            preload="metadata"
+            noAudio={SILENT_VIDEOS.has(item.src)}
           />
           <Scrim title={item.title} />
         </>

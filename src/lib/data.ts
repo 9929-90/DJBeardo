@@ -239,8 +239,8 @@ export const GENRES: Genre[] = [
   {
     name: "Commercial House",
     blurb: "High-energy mainstream house that keeps international and desi floors moving together.",
-    image: "/media/photos/perf-magenta.webp",
-    imageAlt: "DJ Beard performing mainstream house music under magenta party lighting",
+    image: "/media/photos/magenta-house-set.webp",
+    imageAlt: "DJ Beard with headphones and beard visible under magenta party lighting at a commercial house set",
   },
   {
     name: "Hip-Hop",

@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { GALLERY_PHOTOS, GALLERY_VIDEOS } from "@/lib/gallery";
+import { GALLERY_PHOTOS, GALLERY_VIDEOS, SILENT_VIDEOS } from "@/lib/gallery";
 import { PlayIcon } from "@/components/icons";
+import { SpeakerIcon } from "@/components/video-sound";
 import { cn } from "@/lib/utils";
 
 type Item =
@@ -32,7 +33,41 @@ const ITEMS: Item[] = [
 
 export function GalleryGrid() {
   const [active, setActive] = useState<number | null>(null);
+  const [soundTiles, setSoundTiles] = useState<ReadonlySet<number>>(new Set());
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
+  const lightboxVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Unmute the lightbox video as soon as it mounts — the click that opened
+  // it is a user gesture, so play() with sound is allowed here. If the
+  // clip is still loading, retry once it can play.
+  useEffect(() => {
+    if (active === null) return;
+    const v = lightboxVideoRef.current;
+    if (!v) return;
+    v.muted = false;
+    const tryPlay = () => void v.play().catch(() => {});
+    if (v.readyState >= 3) tryPlay();
+    else {
+      v.addEventListener("canplay", tryPlay, { once: true });
+      return () => v.removeEventListener("canplay", tryPlay);
+    }
+  }, [active]);
+
+  const toggleSound = (i: number) => {
+    // React only applies the `muted` prop on mount (react#22770), so the
+    // mute state is flipped imperatively — that change sticks.
+    const next = new Set(soundTiles);
+    if (next.has(i)) next.delete(i);
+    else next.add(i);
+    setSoundTiles(next);
+    const v = videoRefs.current.get(i);
+    if (v) {
+      v.muted = !next.has(i);
+      // If hover-out left this clip paused, the tap restarts it audibly —
+      // the tap itself is the user gesture the browser needs.
+      if (v.paused) void v.play().catch(() => {});
+    }
+  };
 
   const close = useCallback(() => setActive(null), []);
   const step = useCallback(
@@ -114,6 +149,21 @@ export function GalleryGrid() {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
               />
             )}
+            {item.kind === "video" && !SILENT_VIDEOS.has(item.src) ? (
+              <button
+                type="button"
+                aria-label={soundTiles.has(i) ? "Mute this video" : "Unmute this video — hear the sound"}
+                aria-pressed={soundTiles.has(i)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleSound(i);
+                }}
+                className="absolute bottom-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-sm transition-colors duration-300 hover:border-[var(--violet-brand)]/60 hover:bg-black/80"
+              >
+                <SpeakerIcon on={soundTiles.has(i)} />
+              </button>
+            ) : null}
             {item.kind === "video" ? (
               <span className="absolute left-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm">
                 <PlayIcon className="ml-0.5 h-3.5 w-3.5" />
@@ -185,6 +235,7 @@ export function GalleryGrid() {
             ) : (
               <video
                 key={ITEMS[active].src}
+                ref={lightboxVideoRef}
                 src={ITEMS[active].src}
                 poster={ITEMS[active].poster}
                 controls

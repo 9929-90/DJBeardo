@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/reveal";
+import { SoundLoopVideo } from "@/components/video-sound";
+import { SILENT_VIDEOS } from "@/lib/gallery";
 import { SectionHeading, PhotoTile, MoreLink } from "./shared";
 import { GENRES, SERVICES, TESTIMONIALS, FAQS } from "@/lib/data";
 import { SITE, waLink } from "@/lib/site";
@@ -355,21 +357,17 @@ export function VideoShowcase() {
   );
 }
 
-/** Autoplaying muted loop with poster — loads the video only when in view. */
+/** Autoplaying muted loop with a tap-to-hear speaker toggle (skipped on audio-less clips). */
 export function VideoPlayer({ src, poster, alt }: { src: string; poster: string; alt: string }) {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
-      <video
+      <SoundLoopVideo
         src={src}
         poster={poster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-label={alt}
+        alt={alt}
         className="aspect-video h-auto w-full object-cover"
-        data-lazy-video
+        lazy
+        noAudio={SILENT_VIDEOS.has(src)}
       />
     </div>
   );

@@ -136,6 +136,21 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
   },
 ];
 
+/**
+ * Clips shipped WITHOUT an audio stream (verified with ffprobe — these
+ * are the original template b-roll files, silent from day one). The
+ * speaker button is pointless on them, so components skip it. If a
+ * sound-carrying original is provided later, drop its path from here.
+ */
+export const SILENT_VIDEOS = new Set([
+  "/media/videos/showcase-crowd.mp4",
+  "/media/videos/techno-night.mp4",
+  "/media/videos/sangeet-bhairavgarh.mp4",
+  "/media/videos/party-energy.mp4",
+  "/media/videos/oberoi-udaivilas.mp4",
+  "/media/videos/crowd-bambhole.mp4",
+]);
+
 export const GALLERY_VIDEOS: GalleryVideo[] = [
   {
     src: "/media/videos/gallery-big-stage.mp4",
