@@ -35,8 +35,8 @@ export const SERVICES: Service[] = [
       "DJ with percussion — live dhol, tabla or drums over the decks",
       "Premium audio production suited to palace venues",
     ],
-    image: "/media/photos/venue-stage-live-band.webp",
-    imageAlt: "DJ Beard performing on a wedding stage with a large LED backdrop, live keyboardist and a young performer at the microphone",
+    image: "/media/photos/wedding-rooftop-lake-pichola.webp",
+    imageAlt: "DJ Beard performing at a rooftop venue overlooking Lake Pichola, with the Lake Palace in the background",
     accent: {
       title: "DJ with percussion",
       text: "A live percussionist jamming over the mix — dhol, tabla or drums — turning the dance-floor peaks into a full live act.",
@@ -62,8 +62,8 @@ export const SERVICES: Service[] = [
       "Compact to full-scale production setups",
       "MC coordination available with trusted local anchors",
     ],
-    image: "/media/photos/perf-magenta.webp",
-    imageAlt: "DJ Beard performing at a private party in Udaipur under magenta stage lighting",
+    image: "/media/photos/hoodie-led-wall.webp",
+    imageAlt: "DJ Beard in his signature hoodie performing in front of a red LED star wall at a private party night",
   },
   {
     slug: "corporate-events-dj",
@@ -132,10 +132,18 @@ export const SERVICES: Service[] = [
       "School, college & society festivals",
       "High-energy festive programming for every crowd",
     ],
-    image: "/media/photos/perf-console-dandiya.webp",
-    imageAlt: "Festive DJ performance — DJ Beard at the console during a vibrant festival night celebration with traditionally dressed dancers in Udaipur",
+    image: "/media/photos/festive-holi-colours.webp",
+    imageAlt: "DJ Beard with holi colour powder on his face performing at the decks during a Holi celebration",
   },
 ];
+
+/**
+ * Service spotlight images shot in portrait — the services list and the
+ * service pages render these in a 3/4 tile so nothing is cropped away.
+ */
+export const SERVICE_PORTRAIT_IMAGES = new Set([
+  "/media/photos/festive-holi-colours.webp",
+]);
 
 /* ============ PROFESSIONAL DJ EQUIPMENT ============ */
 export type EquipmentItem = {

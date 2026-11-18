@@ -124,9 +124,6 @@ export function GalleryGrid() {
                 {item.badge}
               </span>
             ) : null}
-            <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-5 pt-14 text-[13px] font-light tracking-[0.06em] text-zinc-200">
-              {item.caption}
-            </figcaption>
           </figure>
         ))}
       </div>

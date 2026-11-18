@@ -60,3 +60,10 @@ export function waServiceLink(serviceName: string) {
     `Hello DJ Beard, I would like to enquire about booking you for an upcoming event in Udaipur — specifically your ${serviceName} service.`
   );
 }
+
+/**
+ * Google Drive folder with the full guest photo/video albums, linked from
+ * the bottom of the gallery page. PLACEHOLDER — the client sends the real
+ * folder link; replace the URL only, nothing else changes.
+ */
+export const GALLERY_DRIVE_URL = "https://drive.google.com/drive/folders/CLIENT-TO-REPLACE";

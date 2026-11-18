@@ -138,6 +138,34 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
 
 export const GALLERY_VIDEOS: GalleryVideo[] = [
   {
+    src: "/media/videos/gallery-big-stage.mp4",
+    poster: "/media/posters/gallery-big-stage.webp",
+    alt: "Huge festival crowd in front of the DJ Beard stage with white truss lights and light beams",
+    caption: "Big stage, bigger crowd",
+    ratio: "landscape",
+  },
+  {
+    src: "/media/videos/gallery-full-floor.mp4",
+    poster: "/media/posters/gallery-full-floor.webp",
+    alt: "Guests dancing across a green-lit hotel ballroom during a DJ Beard party night",
+    caption: "Full floor, green light",
+    ratio: "landscape",
+  },
+  {
+    src: "/media/videos/gallery-jai-ho-mementos.mp4",
+    poster: "/media/posters/gallery-jai-ho-mementos.webp",
+    alt: "Guests dancing at the Jai Ho stage night at Mementos by ITC Hotels, Udaipur",
+    caption: "Jai Ho night — Mementos by ITC Hotels",
+    ratio: "portrait",
+  },
+  {
+    src: "/media/videos/gallery-ballroom-night.mp4",
+    poster: "/media/posters/gallery-ballroom-night.webp",
+    alt: "Magenta lasers over a packed hotel ballroom dance floor during a DJ Beard set",
+    caption: "Laser-lit ballroom night",
+    ratio: "portrait",
+  },
+  {
     src: "/media/videos/showcase-crowd.mp4",
     poster: "/media/posters/showcase-crowd.webp",
     alt: "Ocean of guests with phone lights at a DJ Beard open-air performance",

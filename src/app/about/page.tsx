@@ -133,7 +133,7 @@ export default function AboutPage() {
 
           <Reveal variant="right" className="space-y-5">
             <PhotoTile
-              src="/media/photos/portrait-rooftop-dj.webp"
+              src="/media/photos/rooftop-dj-city.webp"
               alt="DJ Beard performing at a rooftop DJ setup overlooking Udaipur city"
               caption="On the decks above the city"
               ratio="aspect-[4/3]"
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 sizes="(max-width: 1024px) 46vw, 22vw"
               />
               <PhotoTile
-                src="/media/photos/bts-poolside.webp"
+                src="/media/photos/poolside-dj-centred.webp"
                 alt="DJ Beard at a resort poolside setup before an evening performance"
                 ratio="aspect-[3/4]"
                 sizes="(max-width: 1024px) 46vw, 22vw"

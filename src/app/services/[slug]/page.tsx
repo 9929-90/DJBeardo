@@ -6,7 +6,7 @@ import { PageHeader, JsonLd } from "@/components/layout/page-header";
 import { Reveal } from "@/components/reveal";
 import { CtaBand } from "@/components/sections/home-sections";
 import { PhotoTile } from "@/components/sections/shared";
-import { SERVICES } from "@/lib/data";
+import { SERVICES, SERVICE_PORTRAIT_IMAGES } from "@/lib/data";
 import { SITE, waServiceLink } from "@/lib/site";
 import { CheckIcon } from "@/components/icons";
 
@@ -93,6 +93,14 @@ export default async function ServicePage({ params }: Params) {
                 ))}
               </div>
             </Reveal>
+            {service.accent && (
+              <Reveal delay={80} className="mt-8">
+                <div className="rounded-xl border border-[var(--violet-brand)]/40 bg-[var(--violet-brand)]/[0.09] px-6 py-5 shadow-[0_10px_36px_rgba(124,58,237,0.14)]">
+                  <p className="text-eyebrow !text-[var(--violet-soft)]">{service.accent.title}</p>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-zinc-200">{service.accent.text}</p>
+                </div>
+              </Reveal>
+            )}
             <Reveal delay={120} className="mt-10">
               <h2 className="text-xl font-light text-white">What&rsquo;s included</h2>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -124,7 +132,13 @@ export default async function ServicePage({ params }: Params) {
               <PhotoTile
                 src={service.image}
                 alt={service.imageAlt}
-                ratio="aspect-[4/3]"
+                ratio={
+                  service.slug === "wedding-dj"
+                    ? "aspect-[16/10]"
+                    : SERVICE_PORTRAIT_IMAGES.has(service.image)
+                      ? "aspect-[3/4]"
+                      : "aspect-[4/3]"
+                }
                 sizes="(max-width: 1024px) 92vw, 42vw"
                 priority
               />

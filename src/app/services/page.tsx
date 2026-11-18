@@ -5,7 +5,7 @@ import { PageHeader, JsonLd } from "@/components/layout/page-header";
 import { Reveal } from "@/components/reveal";
 import { CtaBand, FaqSection } from "@/components/sections/home-sections";
 import { ServicesPageEquipment } from "@/components/sections/equipment";
-import { SERVICES, FAQS } from "@/lib/data";
+import { SERVICES, FAQS, SERVICE_PORTRAIT_IMAGES } from "@/lib/data";
 import { SITE, waServiceLink } from "@/lib/site";
 import { CheckIcon } from "@/components/icons";
 
@@ -74,7 +74,7 @@ export default function ServicesPage() {
                       alt={s.imageAlt}
                       width={1200}
                       height={800}
-                      className="aspect-[3/2] h-auto w-full object-cover transition-transform duration-[1200ms] hover:scale-[1.03]"
+                      className={`${SERVICE_PORTRAIT_IMAGES.has(s.image) ? "aspect-[4/5]" : "aspect-[3/2]"} h-auto w-full object-cover transition-transform duration-[1200ms] hover:scale-[1.03]`}
                       sizes="(max-width: 1024px) 92vw, 46vw"
                       loading={i === 0 ? "eager" : "lazy"}
                     />
